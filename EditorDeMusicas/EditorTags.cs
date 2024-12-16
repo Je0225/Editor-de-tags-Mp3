@@ -48,7 +48,6 @@ namespace EditorDeMusicas {
         NomesTags.Add(Path.GetFileName(caminho), caminho);
       }
       return NomesTags.Keys.ToArray();
-      // todo: return the count of the elements
     }
     public void PopulaListaTags(String[] selecionadas) {
       tags.Clear();
@@ -84,9 +83,8 @@ namespace EditorDeMusicas {
     }
 
     public Image? RetornaCapaDaTag(File file) {
-      if (file.Tag.Pictures[0].Data.Count > 0) {
-        Byte[] bytes = new Byte[file.Tag.Pictures[0].Data.Count];
-        bytes = file.Tag.Pictures[0].Data.ToArray();
+      if (file.Tag.Pictures.Length > 0 && file.Tag.Pictures[0].Data.Count > 0) {
+        Byte[] bytes = file.Tag.Pictures[0].Data.ToArray();
         ImagemEscolhida = Image.FromStream(new MemoryStream(bytes));
         BytesImagem = bytes;
         return ImagemEscolhida;
@@ -108,12 +106,18 @@ namespace EditorDeMusicas {
       if (ofd.ShowDialog() != DialogResult.OK)
         return;
 
-      byte[] bytes = System.IO.File.ReadAllBytes(ofd.FileName);
+      Byte[] bytes = System.IO.File.ReadAllBytes(ofd.FileName);
+      ImagemEscolhida = Image.FromStream(new MemoryStream(bytes));
+      BytesImagem = bytes;
+    }
+
+    public void RecebeImagemDeUmaBusca(Byte[] bytes) {
       ImagemEscolhida = Image.FromStream(new MemoryStream(bytes));
       BytesImagem = bytes;
     }
 
     private void SetaCapaNaTag(File file) {
+      file.Tag.Pictures = null;
       file.Tag.Pictures = new IPicture[] {
         new Picture(new ByteVector(BytesImagem)) {
           Type = PictureType.FrontCover,

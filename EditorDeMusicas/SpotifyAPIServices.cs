@@ -15,7 +15,7 @@ namespace EditorDeMusicas {
 
     public List<Items>? BuscaItems(String artista, String track, Boolean buscarProximaPagina = false) {
       String type = "track";
-      Int32 limit = 10;
+      Int32 limit = 7;
       MontaURL(artista, track, type, limit.ToString());
       Response = null;
 

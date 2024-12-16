@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using File = TagLib.File;
 using Tag = TagLib.Id3v2.Tag;
 
@@ -6,7 +7,8 @@ namespace EditorDeMusicas {
 
   public partial class FrmTracksRetornadas : Form {
 
-    private ViewTrack? SelectedItem { get; set; }
+    public Items? SelectedItem { get; set; }
+    private ViewTrack? SelectedViewTrack { get; set; }
 
     private List<Items>? Tracks { get; set; }
 
@@ -22,28 +24,41 @@ namespace EditorDeMusicas {
           track.Nome,
           track.Album.Nome,
           track.Artistas[0].Nome,
-          track.Album.Imagens[2].Data));
+          track.Album.Imagens[1].Data) {
+          Tag = track
+        });
       }
-      foreach (Control panel in pnlItems.Controls) {
-        panel.Click += ViewTrack_Click;
-      }
+      //foreach (ViewTrack panel in pnlItems.Controls.OfType<ViewTrack>()) {
+       // panel.Click += ViewTrack_Click;
+      //}
     }
 
-    private void ViewTrack_Click(Object? sender, EventArgs e) {
-      foreach (Control control in pnlItems.Controls) {
+    private void ViewTrack_Click(Object sender, EventArgs e) {
+      foreach (ViewTrack control in pnlItems.Controls.OfType<ViewTrack>().Where(control => control.EstaSelecionado = true)) {
+        control.EstaSelecionado = false;
         control.BackColor = SystemColors.Control;
       }
-      SelectedItem = (ViewTrack)sender!;
-      SelectedItem.Focus();
-      SelectedItem.BackColor = SystemColors.GradientInactiveCaption;
+      SelectedViewTrack = (ViewTrack)sender;
+      SelectedViewTrack.EstaSelecionado = true;
+      SelectedItem = (Items)SelectedViewTrack.Tag;
+      SelectedViewTrack.Focus();
+      SelectedViewTrack.BackColor = SystemColors.GradientInactiveCaption;
     }
 
+    private void Selecionar() {
+      DialogResult = DialogResult.OK;
+      Close();
+    }
+
+    private void FazerOutraBusca() {
+      DialogResult = DialogResult.Continue;
+    }
     private void btnFazOutraBusca_Click(Object sender, EventArgs e) {
-      
+      FazerOutraBusca();
     }
 
     private void btnSelecionar_Click(object sender, EventArgs e) {
-
+      Selecionar();
     }
 
   }

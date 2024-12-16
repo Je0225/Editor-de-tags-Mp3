@@ -25,8 +25,8 @@
     private void InitializeComponent() {
       btnFazerOutraBusca = new Button();
       pnlBottom = new Panel();
-      pnlItems = new FlowLayoutPanel();
       btnSelecionar = new Button();
+      pnlItems = new FlowLayoutPanel();
       pnlBottom.SuspendLayout();
       SuspendLayout();
       // 
@@ -49,14 +49,6 @@
       pnlBottom.Size = new Size(365, 38);
       pnlBottom.TabIndex = 4;
       // 
-      // pnlItems
-      // 
-      pnlItems.Dock = DockStyle.Fill;
-      pnlItems.Location = new Point(0, 0);
-      pnlItems.Name = "pnlItems";
-      pnlItems.Size = new Size(365, 513);
-      pnlItems.TabIndex = 5;
-      // 
       // btnSelecionar
       // 
       btnSelecionar.Location = new Point(12, 6);
@@ -65,6 +57,16 @@
       btnSelecionar.TabIndex = 4;
       btnSelecionar.Text = "Selecionar";
       btnSelecionar.UseVisualStyleBackColor = true;
+      btnSelecionar.Click += btnSelecionar_Click;
+      // 
+      // pnlItems
+      // 
+      pnlItems.AutoScroll = true;
+      pnlItems.Dock = DockStyle.Fill;
+      pnlItems.Location = new Point(0, 0);
+      pnlItems.Name = "pnlItems";
+      pnlItems.Size = new Size(365, 513);
+      pnlItems.TabIndex = 5;
       // 
       // FrmTracksRetornadas
       // 

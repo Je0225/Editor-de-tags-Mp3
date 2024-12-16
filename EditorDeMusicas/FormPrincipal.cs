@@ -6,11 +6,16 @@ namespace EditorDeMusicas {
 
     private EditorTags Editor { get; set; }
 
-    private SpotifyApiServices Api = new SpotifyApiServices();
+    private readonly SpotifyApiServices api = new ();
+
+    private Items ItemDaBusca { get; set; }
+
+
     public FormPrincipal() {
       InitializeComponent();
       Editor = new EditorTags();
       CarregaCapaGenerica();
+      lblQuantidadeArquivosRes.Text = "";
     }
 
     private void ProcuraDiretorio() {
@@ -51,11 +56,14 @@ namespace EditorDeMusicas {
       }
     }
 
-    private void LimpaCamposEditor() {
+    private void LimpaCamposEditor(Boolean carregarCapaGenerica = true) {
       tbTitulo.Clear();
       tbArtista.Clear();
       tbAlbum.Clear();
-      CarregaCapaGenerica();
+      tbTrack.Clear();
+      if (carregarCapaGenerica) {
+        CarregaCapaGenerica();
+      }
     }
 
     private void Salvar() {
@@ -87,15 +95,27 @@ namespace EditorDeMusicas {
     }
 
     private void Pesquisar() {
-      if (Editor.tags.Count is > 1 or 0) {
-        return;
-      }
-      List<Items>? tracks = Api.BuscaItems(Editor.tags[0].Tag.Performers[0], Editor.tags[0].Tag.Title);
+      List<Items>? tracks = api.BuscaItems(tbArtista.Text, tbTitulo.Text);
       if (tracks == null) {
         return;
       }
-      FrmTracksRetornadas fmFrmTracksRetornadas = new(tracks);
-      fmFrmTracksRetornadas.ShowDialog();
+      FrmTracksRetornadas fmTracksRetornadas = new(tracks);
+      fmTracksRetornadas.ShowDialog();
+      if (fmTracksRetornadas.DialogResult != DialogResult.OK || fmTracksRetornadas.SelectedItem == null) {
+        return;
+      }
+      ItemDaBusca = fmTracksRetornadas.SelectedItem;
+      AddInformacoesBusca();
+    }
+
+    private void AddInformacoesBusca() {
+      LimpaCamposEditor(false);
+      tbTitulo.Text = ItemDaBusca.Nome;
+      tbAlbum.Text = ItemDaBusca.Album.Nome;
+      tbArtista.Text = ItemDaBusca.Artistas.First().Nome;
+      tbTrack.Text = ItemDaBusca.NumeroDisco.ToString();
+      Editor.RecebeImagemDeUmaBusca(ItemDaBusca.Album.Imagens[0].Data);
+      pbCapa.Image = Editor.ImagemEscolhida;
     }
 
     private void btnSalvar_Click(object sender, EventArgs e) {
@@ -120,6 +140,25 @@ namespace EditorDeMusicas {
     }
 
   }
-  // todo: Manage the token request;
-  // todo[editor]: if while editing tags the files in the directory changes?
+  /*
+   for test
+   todo[test]: Manage the token request;
+
+   to improve
+   todo[editor]: if while editing tags the files in the directory changes?
+
+   editorTags
+   todo: return the count of the elements from the folder selected;
+
+   frmTracks
+   Todo: make all the trackView elements change wen the mouse events starts;
+   Todo: fix the mouse and click events;
+
+  viewTrack
+   Todo: Its really necessary load 3 images? 
+
+   formPrincipal
+   Todo: Add more fields pf tag properties;
+   Todo: Don't close the frmTracks while the select button its not pressed;
+  */
 }
