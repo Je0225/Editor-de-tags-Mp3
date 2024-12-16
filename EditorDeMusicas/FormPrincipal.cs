@@ -2,27 +2,27 @@ using File = TagLib.File;
 
 namespace EditorDeMusicas {
 
-  public partial class FormPrincipal : Form {
+  public partial class FormPrincipal: Form {
 
-    private EditorTags editor { get; set; }
+    private EditorTags Editor { get; set; }
 
+    private SpotifyApiServices Api = new SpotifyApiServices();
     public FormPrincipal() {
       InitializeComponent();
-      editor = new EditorTags();
+      Editor = new EditorTags();
       CarregaCapaGenerica();
     }
 
-
     private void ProcuraDiretorio() {
-      editor.ProcuraDiretorio(tbFiltro.Text);
-      tbFiltro.Text = editor.Diretorio;
+      Editor.ProcuraDiretorio(tbFiltro.Text);
+      tbFiltro.Text = Editor.Diretorio;
     }
 
     private void PopulaListView() {
       lvArquivos.Items.Clear();
-      editor.tags.Clear();
+      Editor.tags.Clear();
 
-      String[]? nomesArquivos = editor.RetornaNomesDosArquivos();
+      String[]? nomesArquivos = Editor.RetornaNomesDosArquivos();
       if (nomesArquivos == null)
         return;
       foreach (String nome in nomesArquivos) {
@@ -32,14 +32,14 @@ namespace EditorDeMusicas {
     }
 
     private void MudaSelecionadas() {
-      editor.tags.Clear();
-      ListView.SelectedListViewItemCollection sl = lvArquivos.SelectedItems;
+      Editor.tags.Clear();
+      ListView.SelectedListViewItemCollection sl = lvArquivos.SelectedItems;;
       String[] selecionados = new String[sl.Count];
       for (int i = 0; i < sl.Count; i++) {
         selecionados[i] = sl[i].Text;
       }
-      editor.PopulaListaTags(selecionados);
-      foreach (File file in editor.tags) {
+      Editor.PopulaListaTags(selecionados);
+      foreach (File file in Editor.tags) {
         if (lvArquivos.SelectedItems.Count == 1) {
           tbTitulo.Text = file.Tag.Title;
           tbArtista.Text = file.Tag.Performers.Length > 0 ? file.Tag.Performers[0] : "";
@@ -59,7 +59,7 @@ namespace EditorDeMusicas {
     }
 
     private void Salvar() {
-      editor.Salvar(tbArtista.Text, tbAlbum.Text, tbTitulo.Text);
+      Editor.Salvar(tbArtista.Text, tbAlbum.Text, tbTitulo.Text);
       PopulaListView();
       LimpaCamposEditor();
     }
@@ -68,7 +68,7 @@ namespace EditorDeMusicas {
       if (pbCapa.Image != null) {
         pbCapa.Image.Dispose();
       }
-      pbCapa.Image = editor.RetornaCapaDaTag(file);
+      pbCapa.Image = Editor.RetornaCapaDaTag(file);
       if (pbCapa.Image == null) {
         CarregaCapaGenerica();
       }
@@ -78,12 +78,24 @@ namespace EditorDeMusicas {
       if (pbCapa.Image != null) {
         pbCapa.Image.Dispose();
       }
-      pbCapa.Image = editor.RetornaCapaGenerica();
+      pbCapa.Image = Editor.RetornaCapaGenerica();
     }
 
     private void ProcuraImagem() {
-      editor.ProcuraImagem();
-      pbCapa.Image = editor.ImagemEscolhida;
+      Editor.ProcuraImagem();
+      pbCapa.Image = Editor.ImagemEscolhida;
+    }
+
+    private void Pesquisar() {
+      if (Editor.tags.Count is > 1 or 0) {
+        return;
+      }
+      List<Items>? tracks = Api.BuscaItems(Editor.tags[0].Tag.Performers[0], Editor.tags[0].Tag.Title);
+      if (tracks == null) {
+        return;
+      }
+      FrmTracksRetornadas fmFrmTracksRetornadas = new(tracks);
+      fmFrmTracksRetornadas.ShowDialog();
     }
 
     private void btnSalvar_Click(object sender, EventArgs e) {
@@ -103,17 +115,11 @@ namespace EditorDeMusicas {
       ProcuraImagem();
     }
 
-    public async Task pesquisarAsync()
-        {
-            RequestTheAudioDB r = new RequestTheAudioDB();
-            await r.RequestTokens();
-            // esperar o metodo asyncrono terminar a execução.
-            r.FazRequisicaoArtista("Manchester Orchestra", "Gold");
-        }
-
     private void btnPesquisar_Click(object sender, EventArgs e) {
-            pesquisarAsync();
-        }
-  }
+      Pesquisar();
+    }
 
+  }
+  // todo: Manage the token request;
+  // todo[editor]: if while editing tags the files in the directory changes?
 }

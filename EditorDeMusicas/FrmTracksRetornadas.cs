@@ -10,14 +10,9 @@ namespace EditorDeMusicas {
 
     private List<Items>? Tracks { get; set; }
 
-    private File File { get; set; }
-
-    public FrmTracksRetornadas( File file ) {
+    public FrmTracksRetornadas( List<Items> tracks) {
       InitializeComponent();
-      Tracks = new List<Items>();
-      File = file;
-
-      FazBusca();
+      Tracks = tracks;
       CriaPanelsTracks();
     }
 
@@ -27,25 +22,11 @@ namespace EditorDeMusicas {
           track.Nome,
           track.Album.Nome,
           track.Artistas[0].Nome,
-          track.Album.Imagens[1].Data));
+          track.Album.Imagens[2].Data));
       }
       foreach (Control panel in pnlItems.Controls) {
         panel.Click += ViewTrack_Click;
       }
-    }
-
-    private void FazBusca() {
-      Tracks.Clear();
-      SpotifyApiServices api = new SpotifyApiServices();
-      Tracks = api.BuscaItems(File.Tag.Artists[0], File.Tag.Title).Result;
-    }
-
-    private void btnFazOutraBusca_Click(Object sender, EventArgs e) {
-      
-    }
-
-    private void btnSelecionar_Click(object sender, EventArgs e) {
-
     }
 
     private void ViewTrack_Click(Object? sender, EventArgs e) {
@@ -55,6 +36,14 @@ namespace EditorDeMusicas {
       SelectedItem = (ViewTrack)sender!;
       SelectedItem.Focus();
       SelectedItem.BackColor = SystemColors.GradientInactiveCaption;
+    }
+
+    private void btnFazOutraBusca_Click(Object sender, EventArgs e) {
+      
+    }
+
+    private void btnSelecionar_Click(object sender, EventArgs e) {
+
     }
 
   }

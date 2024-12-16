@@ -85,10 +85,8 @@ namespace EditorDeMusicas {
 
     public Image? RetornaCapaDaTag(File file) {
       if (file.Tag.Pictures[0].Data.Count > 0) {
-        byte[] bytes = new byte[file.Tag.Pictures[0].Data.Count];
-        for (int i = 0; i < file.Tag.Pictures[0].Data.Count; i++) {
-          bytes[i] = file.Tag.Pictures[0].Data[i];
-        }
+        Byte[] bytes = new Byte[file.Tag.Pictures[0].Data.Count];
+        bytes = file.Tag.Pictures[0].Data.ToArray();
         ImagemEscolhida = Image.FromStream(new MemoryStream(bytes));
         BytesImagem = bytes;
         return ImagemEscolhida;
@@ -123,8 +121,6 @@ namespace EditorDeMusicas {
         }
       };
     }
-
-    // todo: if while editing tags the files in the directory changes?
   }
 
 }

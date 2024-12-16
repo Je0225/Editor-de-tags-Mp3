@@ -12,10 +12,11 @@
         AutoSize = true
       };
 
-      // Colocar os bytes no picture box
       pbCapa = new PictureBox {
         Size = new Size(70, 70),
-        BackColor = Color.Black
+        BackColor = Color.Black,
+        Image = Image.FromStream(new MemoryStream(DataCapa)),
+        SizeMode = PictureBoxSizeMode.StretchImage
       };
 
       AutoSize = false;

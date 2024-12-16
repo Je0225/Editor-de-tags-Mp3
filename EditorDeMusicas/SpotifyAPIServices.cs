@@ -7,41 +7,42 @@ namespace EditorDeMusicas {
 
   public class SpotifyApiServices {
 
-    private String Url { get; set; } = "https://api.spotify.com/v1/search?q=[QUERY]&limit=[LIMIT]&type=[TYPE]";
+    private String Url { get; set; }
 
     private Tokens? TokenInfo { get; set; }
 
     private Response? Response { get; set; }
 
-    public async Task<List<Items>?>? BuscaItems(String artista, String track, Boolean buscarProximaPagina = false) {
+    public List<Items>? BuscaItems(String artista, String track, Boolean buscarProximaPagina = false) {
       String type = "track";
       Int32 limit = 10;
       MontaURL(artista, track, type, limit.ToString());
-      await FazRequisicaoTokens();
+      Response = null;
 
-      Response = JsonConvert.DeserializeObject<Response>(buscarProximaPagina
-        ? FazRequisicaoTracks().Result
-        : FazRequisicaoTracks(Response.Tracks.ProximaUrl).Result);
+      if (buscarProximaPagina) {
+        Response = JsonConvert.DeserializeObject<Response>(FazRequisicaoTracks(Response.Tracks.ProximaUrl).Result);
+      } else {
+        Response = JsonConvert.DeserializeObject<Response>(FazRequisicaoTracks().Result);
+      }
       BaixaImagensAsync();
       return Response?.Tracks.Items;
     }
 
-    private async Task BaixaImagensAsync() {
+    private void BaixaImagensAsync() {
       if (Response?.Tracks.Items == null) {
         return;
       }
       foreach (Items item in Response.Tracks.Items) {
         foreach (Imagem imagem in item.Album.Imagens) {
-          using (HttpClient client = new HttpClient()) {
-            using (Task<Byte[]> stream = client.GetByteArrayAsync(imagem.Url)) {
-              imagem.Data = client.GetByteArrayAsync(imagem.Url).Result;
-            }
-          }
+          using HttpClient client = new HttpClient();
+          using Task<Byte[]> stream = client.GetByteArrayAsync(imagem.Url);
+          imagem.Data = stream.Result;
         }
       }
     }
 
     private void MontaURL(String artista, String track, String type, String limit) {
+      Url = "https://api.spotify.com/v1/search?q=[QUERY]&limit=[LIMIT]&type=[TYPE]";
       String q = "track:[TRACK] artist:[ARTIST]";
 
       q = q.Replace("[TRACK]", track).Replace("[ARTIST]", artista);
@@ -51,27 +52,35 @@ namespace EditorDeMusicas {
 
     private async Task<String> FazRequisicaoTracks(String urlProximaPagina = "") {
       HttpClient client = new HttpClient();
-
-      client.DefaultRequestHeaders.Add("Authorization", TokenInfo.Tipo + " " + TokenInfo.Token);
-      client.BaseAddress = urlProximaPagina != "" ? new Uri(urlProximaPagina) : new Uri(Url);
-      HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
-      return response.Content.ReadAsStringAsync().Result;
+      if (TokenInfo == null) {
+        RequestTokens();
+      }
+      for (int i = 0; i <= 3; i++) {
+        client.DefaultRequestHeaders.Add("Authorization", TokenInfo.Tipo + " " + TokenInfo.Token);
+        client.BaseAddress = urlProximaPagina != "" ? new Uri(urlProximaPagina) : new Uri(Url);
+        HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
+        if (response.StatusCode == HttpStatusCode.OK) {
+          return response.Content.ReadAsStringAsync().Result;
+        } 
+        RequestTokens();
+      }
+      return null;
     }
 
-    private async Task FazRequisicaoTokens() {
+    private void RequestTokens() {
       const String clientId = "491f7b6137034fa7a596b3bec85d6b8a";
-      const String clientSecret = "9085bbee72404ab1a369758a46b638d9";
+      const String clientSecret = "dd935b5a39264b049cf3a6fc73815762";
       HttpClient client = new HttpClient();
 
       String authValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(clientId + ":" + clientSecret));
       client.DefaultRequestHeaders.Add("Authorization", "Basic " + authValue);
       FormUrlEncodedContent content = new FormUrlEncodedContent(new Dictionary<String, String> { { "grant_type", "client_credentials" } });
-      HttpResponseMessage response = await client.PostAsync("https://accounts.spotify.com/api/token", content);
-      String responseBody = await response.Content.ReadAsStringAsync();
+      HttpResponseMessage response = client.PostAsync("https://accounts.spotify.com/api/token", content).Result;
+      String responseBody =  response.Content.ReadAsStringAsync().Result;
       if (response.IsSuccessStatusCode) {
         TokenInfo = JsonConvert.DeserializeObject<Tokens>(responseBody);
       } else {
-        MessageBox.Show(@"Error: " + response.StatusCode);
+        MessageBox.Show(@"Erro ao requisitar tokens: " + response.StatusCode + ": \n" + response.Content);
       }
     }
 
