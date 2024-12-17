@@ -8,9 +8,9 @@ namespace EditorDeMusicas {
 
     public String Diretorio { get; private set; }
 
-    public List<File> tags { get; set; }
+    public List<File> Tags { get; set; }
 
-    private IDictionary<String, String> NomesTags { get; }
+    public IDictionary<String, String> NomesTags { get; }
 
     public Image ImagemEscolhida { get; private set; }
 
@@ -20,7 +20,7 @@ namespace EditorDeMusicas {
 
     public EditorTags() {
       pathCapaGenerica = Environment.CurrentDirectory + "\\Resources\\imageMp3.jpg";
-      tags = new List<File> {};
+      Tags = new List<File> {};
       NomesTags = new Dictionary<String, String>();
 
       Tag.DefaultVersion = 3;
@@ -50,25 +50,25 @@ namespace EditorDeMusicas {
       return NomesTags.Keys.ToArray();
     }
     public void PopulaListaTags(String[] selecionadas) {
-      tags.Clear();
+      Tags.Clear();
       foreach (String nome in selecionadas) {
         if (NomesTags.TryGetValue(nome, out String? tag)) {
           var file = File.Create(tag);
-          tags.Add(file);
+          Tags.Add(file);
         }
       }
     }
 
     public void Salvar(String artista, String album, String titulo = "") {
-      if (tags.Count == 0) {
+      if (Tags.Count == 0) {
         return;
       }
       String? mensagem = null;
-      foreach ( File faixa in tags) {
-        faixa.Tag.AlbumArtists = new[] { artista };
+      foreach ( File faixa in Tags) {
+        faixa.Tag.Performers = new[] { artista };
         faixa.Tag.Album = album;
         SetaCapaNaTag(faixa);
-        if (tags.Count == 1) {
+        if (Tags.Count == 1) {
           faixa.Tag.Title = titulo;
           faixa.Save();
           string newpath = Diretorio + "\\" + titulo + ".mp3";

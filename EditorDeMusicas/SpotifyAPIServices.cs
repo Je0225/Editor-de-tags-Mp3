@@ -13,17 +13,22 @@ namespace EditorDeMusicas {
 
     private Response? Response { get; set; }
 
-    public List<Items>? BuscaItems(String artista, String track, Boolean buscarProximaPagina = false) {
+    /*public List<Items>? BuscaItems(String artista, String track) {
       String type = "track";
-      Int32 limit = 7;
+      Int32 limit = 50;
       MontaURL(artista, track, type, limit.ToString());
-      Response = null;
 
-      if (buscarProximaPagina) {
-        Response = JsonConvert.DeserializeObject<Response>(FazRequisicaoTracks(Response.Tracks.ProximaUrl).Result);
-      } else {
-        Response = JsonConvert.DeserializeObject<Response>(FazRequisicaoTracks().Result);
-      }
+      Response = JsonConvert.DeserializeObject<Response>(FazRequisicaoTracks().Result);
+      BaixaImagensAsync();
+      return Response?.Tracks.Items;
+    }*/
+
+    public async Task<List<Items>?> BuscaItems(String artista, String track) {
+      String type = "track";
+      Int32 limit = 50;
+      MontaURL(artista, track, type, limit.ToString());
+
+      Response = JsonConvert.DeserializeObject<Response>(await FazRequisicaoTracks());
       BaixaImagensAsync();
       return Response?.Tracks.Items;
     }
@@ -50,14 +55,14 @@ namespace EditorDeMusicas {
       Url = Url.Replace("[QUERY]", q).Replace("[TYPE]", type).Replace("[LIMIT]", limit);
     }
 
-    private async Task<String> FazRequisicaoTracks(String urlProximaPagina = "") {
+    private async Task<String> FazRequisicaoTracks() {
       HttpClient client = new HttpClient();
       if (TokenInfo == null) {
         RequestTokens();
       }
       for (int i = 0; i <= 3; i++) {
         client.DefaultRequestHeaders.Add("Authorization", TokenInfo.Tipo + " " + TokenInfo.Token);
-        client.BaseAddress = urlProximaPagina != "" ? new Uri(urlProximaPagina) : new Uri(Url);
+        client.BaseAddress = new Uri(Url);
         HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
         if (response.StatusCode == HttpStatusCode.OK) {
           return response.Content.ReadAsStringAsync().Result;

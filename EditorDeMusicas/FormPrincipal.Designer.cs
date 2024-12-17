@@ -31,39 +31,48 @@
       btnProcurar = new Button();
       lvArquivos = new ListView();
       clmNomeArquivo = new ColumnHeader();
-      groupBox1 = new GroupBox();
+      clmStatus = new ColumnHeader();
+      gbFaixas = new GroupBox();
       btnPesquisar = new Button();
       lblQuantidadeArquivosRes = new Label();
       lblQtdArquivosText = new Label();
-      groupBox2 = new GroupBox();
+      gbPropriedades = new GroupBox();
+      lblArtistasParticipantes = new Label();
+      tbArtistasParticipantes = new TextBox();
+      lblCompositor = new Label();
+      lblGenero = new Label();
+      lblAno = new Label();
+      tbCompositor = new TextBox();
       btnProcurarImagem = new Button();
+      tbGenero = new TextBox();
+      tbAno = new TextBox();
       pbCapa = new PictureBox();
-      tbTrack = new TextBox();
-      lblTrack = new Label();
+      tbNumero = new TextBox();
+      lblNumero = new Label();
       tbAlbum = new TextBox();
       lblAlbum = new Label();
-      tbArtista = new TextBox();
-      lblArtista = new Label();
+      tbArtistaAlbum = new TextBox();
+      lblArtistaAlbum = new Label();
       tbTitulo = new TextBox();
       btnSalvar = new Button();
       lblTitulo = new Label();
       openFileDialog = new OpenFileDialog();
       openFileDialog1 = new OpenFileDialog();
-      groupBox1.SuspendLayout();
-      groupBox2.SuspendLayout();
+      gbFaixas.SuspendLayout();
+      gbPropriedades.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)pbCapa).BeginInit();
       SuspendLayout();
       // 
       // tbFiltro
       // 
-      tbFiltro.Location = new Point(9, 31);
+      tbFiltro.Location = new Point(9, 19);
       tbFiltro.Name = "tbFiltro";
       tbFiltro.Size = new Size(280, 23);
       tbFiltro.TabIndex = 0;
       // 
       // btnProcurar
       // 
-      btnProcurar.Location = new Point(295, 31);
+      btnProcurar.Location = new Point(295, 19);
       btnProcurar.Name = "btnProcurar";
       btnProcurar.Size = new Size(98, 23);
       btnProcurar.TabIndex = 1;
@@ -73,39 +82,47 @@
       // 
       // lvArquivos
       // 
-      lvArquivos.Columns.AddRange(new ColumnHeader[] { clmNomeArquivo });
+      lvArquivos.Columns.AddRange(new ColumnHeader[] { clmNomeArquivo, clmStatus });
       lvArquivos.FullRowSelect = true;
-      lvArquivos.Location = new Point(9, 60);
+      lvArquivos.Location = new Point(0, 49);
       lvArquivos.Name = "lvArquivos";
-      lvArquivos.Size = new Size(384, 211);
+      lvArquivos.Size = new Size(407, 326);
       lvArquivos.TabIndex = 2;
       lvArquivos.UseCompatibleStateImageBehavior = false;
       lvArquivos.View = View.Details;
+      lvArquivos.ItemChecked += lvArquivos_RightClicked;
       lvArquivos.SelectedIndexChanged += lvArquivos_SelectedIndexChanged;
+      lvArquivos.Click += lvArquivos_RightClicked;
+      lvArquivos.MouseDown += lvArquivos_MouseDown;
       // 
       // clmNomeArquivo
       // 
-      clmNomeArquivo.Text = "Nome";
-      clmNomeArquivo.Width = 120;
+      clmNomeArquivo.Text = "Nome do Arquivo";
+      clmNomeArquivo.Width = 250;
       // 
-      // groupBox1
+      // clmStatus
       // 
-      groupBox1.Controls.Add(btnPesquisar);
-      groupBox1.Controls.Add(lblQuantidadeArquivosRes);
-      groupBox1.Controls.Add(lblQtdArquivosText);
-      groupBox1.Controls.Add(tbFiltro);
-      groupBox1.Controls.Add(btnProcurar);
-      groupBox1.Controls.Add(lvArquivos);
-      groupBox1.Location = new Point(12, 12);
-      groupBox1.Name = "groupBox1";
-      groupBox1.Size = new Size(407, 366);
-      groupBox1.TabIndex = 5;
-      groupBox1.TabStop = false;
-      groupBox1.Text = "groupBox1";
+      clmStatus.Text = "Status";
+      clmStatus.Width = 150;
+      // 
+      // gbFaixas
+      // 
+      gbFaixas.Controls.Add(btnPesquisar);
+      gbFaixas.Controls.Add(lblQuantidadeArquivosRes);
+      gbFaixas.Controls.Add(lblQtdArquivosText);
+      gbFaixas.Controls.Add(tbFiltro);
+      gbFaixas.Controls.Add(btnProcurar);
+      gbFaixas.Controls.Add(lvArquivos);
+      gbFaixas.Location = new Point(3, 1);
+      gbFaixas.Name = "gbFaixas";
+      gbFaixas.Size = new Size(407, 410);
+      gbFaixas.TabIndex = 5;
+      gbFaixas.TabStop = false;
+      gbFaixas.Text = "Faixas";
       // 
       // btnPesquisar
       // 
-      btnPesquisar.Location = new Point(9, 277);
+      btnPesquisar.Location = new Point(6, 381);
       btnPesquisar.Name = "btnPesquisar";
       btnPesquisar.Size = new Size(93, 23);
       btnPesquisar.TabIndex = 7;
@@ -116,7 +133,7 @@
       // lblQuantidadeArquivosRes
       // 
       lblQuantidadeArquivosRes.AutoSize = true;
-      lblQuantidadeArquivosRes.Location = new Point(135, 348);
+      lblQuantidadeArquivosRes.Location = new Point(360, 386);
       lblQuantidadeArquivosRes.Name = "lblQuantidadeArquivosRes";
       lblQuantidadeArquivosRes.Size = new Size(38, 15);
       lblQuantidadeArquivosRes.TabIndex = 6;
@@ -125,35 +142,93 @@
       // lblQtdArquivosText
       // 
       lblQtdArquivosText.AutoSize = true;
-      lblQtdArquivosText.Location = new Point(0, 348);
+      lblQtdArquivosText.Location = new Point(218, 386);
       lblQtdArquivosText.Name = "lblQtdArquivosText";
       lblQtdArquivosText.Size = new Size(136, 15);
       lblQtdArquivosText.TabIndex = 5;
       lblQtdArquivosText.Text = "Quantidade de arquivos:";
       // 
-      // groupBox2
+      // gbPropriedades
       // 
-      groupBox2.Controls.Add(btnProcurarImagem);
-      groupBox2.Controls.Add(pbCapa);
-      groupBox2.Controls.Add(tbTrack);
-      groupBox2.Controls.Add(lblTrack);
-      groupBox2.Controls.Add(tbAlbum);
-      groupBox2.Controls.Add(lblAlbum);
-      groupBox2.Controls.Add(tbArtista);
-      groupBox2.Controls.Add(lblArtista);
-      groupBox2.Controls.Add(tbTitulo);
-      groupBox2.Controls.Add(btnSalvar);
-      groupBox2.Controls.Add(lblTitulo);
-      groupBox2.Location = new Point(425, 18);
-      groupBox2.Name = "groupBox2";
-      groupBox2.Size = new Size(281, 360);
-      groupBox2.TabIndex = 6;
-      groupBox2.TabStop = false;
-      groupBox2.Text = "groupBox2";
+      gbPropriedades.Controls.Add(lblArtistasParticipantes);
+      gbPropriedades.Controls.Add(tbArtistasParticipantes);
+      gbPropriedades.Controls.Add(lblCompositor);
+      gbPropriedades.Controls.Add(lblGenero);
+      gbPropriedades.Controls.Add(lblAno);
+      gbPropriedades.Controls.Add(tbCompositor);
+      gbPropriedades.Controls.Add(btnProcurarImagem);
+      gbPropriedades.Controls.Add(tbGenero);
+      gbPropriedades.Controls.Add(tbAno);
+      gbPropriedades.Controls.Add(pbCapa);
+      gbPropriedades.Controls.Add(tbNumero);
+      gbPropriedades.Controls.Add(lblNumero);
+      gbPropriedades.Controls.Add(tbAlbum);
+      gbPropriedades.Controls.Add(lblAlbum);
+      gbPropriedades.Controls.Add(tbArtistaAlbum);
+      gbPropriedades.Controls.Add(lblArtistaAlbum);
+      gbPropriedades.Controls.Add(tbTitulo);
+      gbPropriedades.Controls.Add(btnSalvar);
+      gbPropriedades.Controls.Add(lblTitulo);
+      gbPropriedades.Location = new Point(416, 1);
+      gbPropriedades.Name = "gbPropriedades";
+      gbPropriedades.Size = new Size(326, 410);
+      gbPropriedades.TabIndex = 6;
+      gbPropriedades.TabStop = false;
+      gbPropriedades.Text = "Propriedades";
+      // 
+      // lblArtistasParticipantes
+      // 
+      lblArtistasParticipantes.AutoSize = true;
+      lblArtistasParticipantes.Location = new Point(4, 76);
+      lblArtistasParticipantes.Name = "lblArtistasParticipantes";
+      lblArtistasParticipantes.Size = new Size(117, 15);
+      lblArtistasParticipantes.TabIndex = 21;
+      lblArtistasParticipantes.Text = "Artistas Participantes";
+      // 
+      // tbArtistasParticipantes
+      // 
+      tbArtistasParticipantes.Location = new Point(126, 73);
+      tbArtistasParticipantes.Name = "tbArtistasParticipantes";
+      tbArtistasParticipantes.Size = new Size(188, 23);
+      tbArtistasParticipantes.TabIndex = 20;
+      // 
+      // lblCompositor
+      // 
+      lblCompositor.AutoSize = true;
+      lblCompositor.Location = new Point(50, 217);
+      lblCompositor.Name = "lblCompositor";
+      lblCompositor.Size = new Size(70, 15);
+      lblCompositor.TabIndex = 19;
+      lblCompositor.Text = "Compositor";
+      // 
+      // lblGenero
+      // 
+      lblGenero.AutoSize = true;
+      lblGenero.Location = new Point(75, 194);
+      lblGenero.Name = "lblGenero";
+      lblGenero.Size = new Size(45, 15);
+      lblGenero.TabIndex = 17;
+      lblGenero.Text = "Gênero";
+      // 
+      // lblAno
+      // 
+      lblAno.AutoSize = true;
+      lblAno.Location = new Point(91, 134);
+      lblAno.Name = "lblAno";
+      lblAno.Size = new Size(29, 15);
+      lblAno.TabIndex = 15;
+      lblAno.Text = "Ano";
+      // 
+      // tbCompositor
+      // 
+      tbCompositor.Location = new Point(126, 217);
+      tbCompositor.Name = "tbCompositor";
+      tbCompositor.Size = new Size(188, 23);
+      tbCompositor.TabIndex = 14;
       // 
       // btnProcurarImagem
       // 
-      btnProcurarImagem.Location = new Point(168, 167);
+      btnProcurarImagem.Location = new Point(91, 256);
       btnProcurarImagem.Name = "btnProcurarImagem";
       btnProcurarImagem.Size = new Size(75, 41);
       btnProcurarImagem.TabIndex = 10;
@@ -161,34 +236,48 @@
       btnProcurarImagem.UseVisualStyleBackColor = true;
       btnProcurarImagem.Click += btnProcurarImagem_Click;
       // 
+      // tbGenero
+      // 
+      tbGenero.Location = new Point(126, 191);
+      tbGenero.Name = "tbGenero";
+      tbGenero.Size = new Size(188, 23);
+      tbGenero.TabIndex = 12;
+      // 
+      // tbAno
+      // 
+      tbAno.Location = new Point(126, 134);
+      tbAno.Name = "tbAno";
+      tbAno.Size = new Size(188, 23);
+      tbAno.TabIndex = 11;
+      // 
       // pbCapa
       // 
-      pbCapa.Location = new Point(20, 167);
+      pbCapa.Location = new Point(172, 256);
       pbCapa.Name = "pbCapa";
       pbCapa.Size = new Size(142, 143);
       pbCapa.SizeMode = PictureBoxSizeMode.StretchImage;
       pbCapa.TabIndex = 9;
       pbCapa.TabStop = false;
       // 
-      // tbTrack
+      // tbNumero
       // 
-      tbTrack.Location = new Point(64, 117);
-      tbTrack.Name = "tbTrack";
-      tbTrack.Size = new Size(188, 23);
-      tbTrack.TabIndex = 8;
+      tbNumero.Location = new Point(126, 163);
+      tbNumero.Name = "tbNumero";
+      tbNumero.Size = new Size(188, 23);
+      tbNumero.TabIndex = 8;
       // 
-      // lblTrack
+      // lblNumero
       // 
-      lblTrack.AutoSize = true;
-      lblTrack.Location = new Point(20, 120);
-      lblTrack.Name = "lblTrack";
-      lblTrack.Size = new Size(34, 15);
-      lblTrack.TabIndex = 7;
-      lblTrack.Text = "Track";
+      lblNumero.AutoSize = true;
+      lblNumero.Location = new Point(69, 165);
+      lblNumero.Name = "lblNumero";
+      lblNumero.Size = new Size(51, 15);
+      lblNumero.TabIndex = 7;
+      lblNumero.Text = "Número";
       // 
       // tbAlbum
       // 
-      tbAlbum.Location = new Point(64, 88);
+      tbAlbum.Location = new Point(126, 105);
       tbAlbum.Name = "tbAlbum";
       tbAlbum.Size = new Size(188, 23);
       tbAlbum.TabIndex = 6;
@@ -196,38 +285,38 @@
       // lblAlbum
       // 
       lblAlbum.AutoSize = true;
-      lblAlbum.Location = new Point(20, 91);
+      lblAlbum.Location = new Point(77, 108);
       lblAlbum.Name = "lblAlbum";
       lblAlbum.Size = new Size(43, 15);
       lblAlbum.TabIndex = 5;
       lblAlbum.Text = "Album";
       // 
-      // tbArtista
+      // tbArtistaAlbum
       // 
-      tbArtista.Location = new Point(64, 59);
-      tbArtista.Name = "tbArtista";
-      tbArtista.Size = new Size(188, 23);
-      tbArtista.TabIndex = 4;
+      tbArtistaAlbum.Location = new Point(126, 44);
+      tbArtistaAlbum.Name = "tbArtistaAlbum";
+      tbArtistaAlbum.Size = new Size(188, 23);
+      tbArtistaAlbum.TabIndex = 4;
       // 
-      // lblArtista
+      // lblArtistaAlbum
       // 
-      lblArtista.AutoSize = true;
-      lblArtista.Location = new Point(20, 62);
-      lblArtista.Name = "lblArtista";
-      lblArtista.Size = new Size(41, 15);
-      lblArtista.TabIndex = 3;
-      lblArtista.Text = "Artista";
+      lblArtistaAlbum.AutoSize = true;
+      lblArtistaAlbum.Location = new Point(23, 47);
+      lblArtistaAlbum.Name = "lblArtistaAlbum";
+      lblArtistaAlbum.Size = new Size(97, 15);
+      lblArtistaAlbum.TabIndex = 3;
+      lblArtistaAlbum.Text = "Artista do Album";
       // 
       // tbTitulo
       // 
-      tbTitulo.Location = new Point(64, 30);
+      tbTitulo.Location = new Point(126, 15);
       tbTitulo.Name = "tbTitulo";
       tbTitulo.Size = new Size(188, 23);
       tbTitulo.TabIndex = 2;
       // 
       // btnSalvar
       // 
-      btnSalvar.Location = new Point(6, 331);
+      btnSalvar.Location = new Point(6, 381);
       btnSalvar.Name = "btnSalvar";
       btnSalvar.Size = new Size(75, 23);
       btnSalvar.TabIndex = 1;
@@ -238,7 +327,7 @@
       // lblTitulo
       // 
       lblTitulo.AutoSize = true;
-      lblTitulo.Location = new Point(20, 33);
+      lblTitulo.Location = new Point(83, 18);
       lblTitulo.Name = "lblTitulo";
       lblTitulo.Size = new Size(37, 15);
       lblTitulo.TabIndex = 0;
@@ -256,16 +345,16 @@
       // 
       AutoScaleDimensions = new SizeF(7F, 15F);
       AutoScaleMode = AutoScaleMode.Font;
-      ClientSize = new Size(718, 390);
-      Controls.Add(groupBox2);
-      Controls.Add(groupBox1);
+      ClientSize = new Size(747, 418);
+      Controls.Add(gbPropriedades);
+      Controls.Add(gbFaixas);
       MaximizeBox = false;
       Name = "FormPrincipal";
       Text = "Editor de Tags MP3";
-      groupBox1.ResumeLayout(false);
-      groupBox1.PerformLayout();
-      groupBox2.ResumeLayout(false);
-      groupBox2.PerformLayout();
+      gbFaixas.ResumeLayout(false);
+      gbFaixas.PerformLayout();
+      gbPropriedades.ResumeLayout(false);
+      gbPropriedades.PerformLayout();
       ((System.ComponentModel.ISupportInitialize)pbCapa).EndInit();
       ResumeLayout(false);
     }
@@ -276,23 +365,32 @@
         private Button btnProcurar;
         private ListView lvArquivos;
         private ColumnHeader clmNomeArquivo;
-        private GroupBox groupBox1;
+        private GroupBox gbFaixas;
         private Label lblQuantidadeArquivosRes;
         private Label lblQtdArquivosText;
-        private GroupBox groupBox2;
+        private GroupBox gbPropriedades;
         private TextBox tbTitulo;
         private Button btnSalvar;
         private Label lblTitulo;
-        private TextBox tbTrack;
-        private Label lblTrack;
+        private TextBox tbNumero;
+        private Label lblNumero;
         private TextBox tbAlbum;
         private Label lblAlbum;
-        private TextBox tbArtista;
-        private Label lblArtista;
+        private TextBox tbArtistaAlbum;
+        private Label lblArtistaAlbum;
         private PictureBox pbCapa;
         private Button btnProcurarImagem;
     private OpenFileDialog openFileDialog;
     private OpenFileDialog openFileDialog1;
     private Button btnPesquisar;
+    private Label lblGenero;
+    private Label lblAno;
+    private TextBox tbCompositor;
+    private TextBox tbGenero;
+    private TextBox tbAno;
+    private Label lblCompositor;
+    private Label lblArtistasParticipantes;
+    private TextBox tbArtistasParticipantes;
+    private ColumnHeader clmStatus;
   }
 }

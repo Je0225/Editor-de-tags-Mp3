@@ -7,7 +7,7 @@ namespace EditorDeMusicas {
 
   public partial class FrmTracksRetornadas : Form {
 
-    public Items? SelectedItem { get; set; }
+    public Items? SelectedItem { get; private set; }
     private ViewTrack? SelectedViewTrack { get; set; }
 
     private List<Items>? Tracks { get; set; }
@@ -28,9 +28,11 @@ namespace EditorDeMusicas {
           Tag = track
         });
       }
-      //foreach (ViewTrack panel in pnlItems.Controls.OfType<ViewTrack>()) {
-       // panel.Click += ViewTrack_Click;
-      //}
+      foreach (ViewTrack panel in pnlItems.Controls.OfType<ViewTrack>()) {
+        foreach (Control control in panel.Controls) {
+          control.Click += ViewTrack_Click;
+        }
+      }
     }
 
     private void ViewTrack_Click(Object sender, EventArgs e) {
@@ -38,7 +40,8 @@ namespace EditorDeMusicas {
         control.EstaSelecionado = false;
         control.BackColor = SystemColors.Control;
       }
-      SelectedViewTrack = (ViewTrack)sender;
+      Control ctrl = (Control)sender;
+      SelectedViewTrack = (ViewTrack)ctrl.Parent;
       SelectedViewTrack.EstaSelecionado = true;
       SelectedItem = (Items)SelectedViewTrack.Tag;
       SelectedViewTrack.Focus();
@@ -48,13 +51,6 @@ namespace EditorDeMusicas {
     private void Selecionar() {
       DialogResult = DialogResult.OK;
       Close();
-    }
-
-    private void FazerOutraBusca() {
-      DialogResult = DialogResult.Continue;
-    }
-    private void btnFazOutraBusca_Click(Object sender, EventArgs e) {
-      FazerOutraBusca();
     }
 
     private void btnSelecionar_Click(object sender, EventArgs e) {

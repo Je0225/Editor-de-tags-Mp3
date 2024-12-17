@@ -23,35 +23,24 @@
     /// the contents of this method with the code editor.
     /// </summary>
     private void InitializeComponent() {
-      btnFazerOutraBusca = new Button();
       pnlBottom = new Panel();
       btnSelecionar = new Button();
       pnlItems = new FlowLayoutPanel();
       pnlBottom.SuspendLayout();
       SuspendLayout();
       // 
-      // btnFazerOutraBusca
-      // 
-      btnFazerOutraBusca.Location = new Point(247, 3);
-      btnFazerOutraBusca.Name = "btnFazerOutraBusca";
-      btnFazerOutraBusca.Size = new Size(109, 26);
-      btnFazerOutraBusca.TabIndex = 3;
-      btnFazerOutraBusca.Text = "Fazer Outra Busca";
-      btnFazerOutraBusca.UseVisualStyleBackColor = true;
-      // 
       // pnlBottom
       // 
       pnlBottom.Controls.Add(btnSelecionar);
-      pnlBottom.Controls.Add(btnFazerOutraBusca);
       pnlBottom.Dock = DockStyle.Bottom;
       pnlBottom.Location = new Point(0, 513);
       pnlBottom.Name = "pnlBottom";
-      pnlBottom.Size = new Size(365, 38);
+      pnlBottom.Size = new Size(364, 38);
       pnlBottom.TabIndex = 4;
       // 
       // btnSelecionar
       // 
-      btnSelecionar.Location = new Point(12, 6);
+      btnSelecionar.Location = new Point(277, 6);
       btnSelecionar.Name = "btnSelecionar";
       btnSelecionar.Size = new Size(75, 23);
       btnSelecionar.TabIndex = 4;
@@ -65,7 +54,7 @@
       pnlItems.Dock = DockStyle.Fill;
       pnlItems.Location = new Point(0, 0);
       pnlItems.Name = "pnlItems";
-      pnlItems.Size = new Size(365, 513);
+      pnlItems.Size = new Size(364, 513);
       pnlItems.TabIndex = 5;
       // 
       // FrmTracksRetornadas
@@ -73,7 +62,7 @@
       AutoScaleDimensions = new SizeF(7F, 15F);
       AutoScaleMode = AutoScaleMode.Font;
       AutoScroll = true;
-      ClientSize = new Size(365, 551);
+      ClientSize = new Size(364, 551);
       Controls.Add(pnlItems);
       Controls.Add(pnlBottom);
       MaximizeBox = false;
@@ -84,8 +73,6 @@
     }
 
     #endregion
-
-    private Button btnFazerOutraBusca;
     private Panel pnlBottom;
     private FlowLayoutPanel pnlItems;
     private Button btnSelecionar;

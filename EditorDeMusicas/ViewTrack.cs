@@ -8,6 +8,8 @@
 
     public Boolean EstaSelecionado { get; set; }
 
+    public Boolean EstaClicado { get; set; }
+
     public ViewTrack(String titulo, String album, String artista, Byte[] DataCapa) {
 
       LblInformacoes = new Label {
@@ -24,6 +26,11 @@
         Size = new Size(104, 78),
       };
 
+      LblInformacoes.MouseHover += OnMouseHover_ViewTrack;
+      LblInformacoes.MouseLeave += OnMouseLeave_ViewTrack;
+      pbCapa.MouseHover += OnMouseHover_ViewTrack;
+      pbCapa.MouseLeave += OnMouseLeave_ViewTrack;
+
       Size = new Size(350, 78);
       Location = new Point(12, 12);
       BorderStyle = BorderStyle.FixedSingle;
@@ -35,7 +42,6 @@
         return;
       }
       BackColor = SystemColors.InactiveCaption;
-      LblInformacoes.BackColor = SystemColors.InactiveCaption;
     }
 
     private void MouseLeaveFrm() {
@@ -43,31 +49,13 @@
         return;
       }
       BackColor = SystemColors.Control;
-      LblInformacoes.BackColor = SystemColors.Control;
     }
 
-    protected override void WndProc(ref Message m) {
-      if (m.Msg == 0x201 || (m.Msg == 0x210 && (int)m.WParam == 0x201)) {
-        if (!ClientRectangle.Contains(PointToClient(Cursor.Position))) {
-          BackColor = SystemColors.GradientInactiveCaption;
-        }
-      }
-      if (m.Msg == 0x84) {
-        if (!this.ClientRectangle.Contains(PointToClient(Cursor.Position))) {
-          BackColor = SystemColors.InactiveCaption;
-          ;
-        }else {
-          BackColor = SystemColors.Control;
-        }
-      }
-      base.WndProc(ref m);
-    }
-
-    private void OnMouseHover_ViewTrack(object sender, EventArgs e) {
+    private void OnMouseHover_ViewTrack(Object? sender, EventArgs e) {
       MouseHoverFrm();
     }
 
-    private void OnMouseLeave_ViewTrack(object sender, EventArgs e) {
+    private void OnMouseLeave_ViewTrack(Object? sender, EventArgs e) {
       MouseLeaveFrm();
     }
 

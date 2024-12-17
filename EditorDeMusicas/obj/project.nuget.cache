@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "kUaMFc31AQg=",
+  "dgSpecHash": "lNdc9eYjDfk=",
   "success": true,
-  "projectFilePath": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj",
+  "projectFilePath": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jenif\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\jenif\\.nuget\\packages\\taglib-sharp-netstandard2.0\\2.1.0\\taglib-sharp-netstandard2.0.2.1.0.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\taglib-sharp-netstandard2.0\\2.1.0\\taglib-sharp-netstandard2.0.2.1.0.nupkg.sha512"
   ],
   "logs": []
 }
