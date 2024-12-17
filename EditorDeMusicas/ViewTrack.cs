@@ -46,13 +46,20 @@
       LblInformacoes.BackColor = SystemColors.Control;
     }
 
-    const int WM_PARENTNOTIFY = 0x210;
-    const int WM_LBUTTONDOWN = 0x21;
-
     protected override void WndProc(ref Message m) {
-      if (m.Msg == WM_LBUTTONDOWN || (m.Msg == WM_PARENTNOTIFY && (int)m.WParam == WM_LBUTTONDOWN))
-        if (this.ClientRectangle.Contains(PointToClient(Cursor.Position))) 
-          MessageBox.Show("Clicou Aqui!");
+      if (m.Msg == 0x201 || (m.Msg == 0x210 && (int)m.WParam == 0x201)) {
+        if (!ClientRectangle.Contains(PointToClient(Cursor.Position))) {
+          BackColor = SystemColors.GradientInactiveCaption;
+        }
+      }
+      if (m.Msg == 0x84) {
+        if (!this.ClientRectangle.Contains(PointToClient(Cursor.Position))) {
+          BackColor = SystemColors.InactiveCaption;
+          ;
+        }else {
+          BackColor = SystemColors.Control;
+        }
+      }
       base.WndProc(ref m);
     }
 

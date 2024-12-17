@@ -63,3 +63,25 @@ C:\Users\User\Documents\Sources\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug
 C:\Users\User\Documents\Sources\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.pdb
 C:\Users\User\Documents\Sources\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.genruntimeconfig.cache
 C:\Users\User\Documents\Sources\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\ref\EditorDeMusicas.dll
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\bin\Debug\net8.0-windows\EditorDeMusicas.exe
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\bin\Debug\net8.0-windows\EditorDeMusicas.deps.json
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\bin\Debug\net8.0-windows\EditorDeMusicas.runtimeconfig.json
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\bin\Debug\net8.0-windows\EditorDeMusicas.dll
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\bin\Debug\net8.0-windows\EditorDeMusicas.pdb
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\bin\Debug\net8.0-windows\taglib-sharp.dll
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.csproj.AssemblyReference.cache
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.FormPrincipal.resources
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.FrmTracksRetornadas.resources
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.Properties.Resources.resources
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.csproj.GenerateResource.cache
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.GeneratedMSBuildEditorConfig.editorconfig
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.AssemblyInfoInputs.cache
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.AssemblyInfo.cs
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.csproj.CoreCompileInputs.cache
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDe.E2D8BEE0.Up2Date
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.dll
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\refint\EditorDeMusicas.dll
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.pdb
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.genruntimeconfig.cache
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\ref\EditorDeMusicas.dll
