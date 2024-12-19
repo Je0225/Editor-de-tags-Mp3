@@ -1,4 +1,4 @@
-using System.Data;
+using System.ComponentModel;
 using File = TagLib.File;
 
 namespace EditorDeMusicas {
@@ -11,8 +11,6 @@ namespace EditorDeMusicas {
 
     private Items ItemDaBusca { get; set; }
 
-    private Dictionary<File, List<Items>> ResultadosBuscas { get; set; }
-
     private Boolean RightClicked { get; set; }
 
     public FormPrincipal() {
@@ -20,11 +18,14 @@ namespace EditorDeMusicas {
       Editor = new EditorTags();
       CarregaCapaGenerica();
       lblQuantidadeArquivosRes.Text = "";
+      lblProgressBar.Text = "";
+      progressBar.Hide();
     }
 
     private void ProcuraDiretorio() {
       Editor.ProcuraDiretorio(tbFiltro.Text);
       tbFiltro.Text = Editor.Diretorio;
+      LimpaCamposEditor();
     }
 
     private void PopulaListView() {
@@ -32,15 +33,16 @@ namespace EditorDeMusicas {
       Editor.Tags.Clear();
 
       String[]? nomesArquivos = Editor.RetornaNomesDosArquivos();
-      if (nomesArquivos == null)
+      if (nomesArquivos == null) {
         return;
+      }
       foreach (String nome in nomesArquivos) {
         lvArquivos.Items.Add(new ListViewItem(new[] { nome }));
       }
       lblQuantidadeArquivosRes.Text = nomesArquivos.Length.ToString();
     }
 
-    private void MudaSelecionadas() {
+    private void MudaSelecionadas() { 
       Editor.Tags.Clear();
       ListView.SelectedListViewItemCollection sl = lvArquivos.SelectedItems;
       ;
@@ -49,19 +51,32 @@ namespace EditorDeMusicas {
         selecionados[i] = sl[i].Text;
       }
       Editor.PopulaListaTags(selecionados);
-      foreach (File file in Editor.Tags) {
-        if (lvArquivos.SelectedItems.Count == 1) {
-          tbTitulo.Text = file.Tag.Title;
-          tbArtistaAlbum.Text = file.Tag.Performers.Length > 0 ? file.Tag.Performers[0] : "";
-          tbAlbum.Text = file.Tag.Album;
-          CarregaCapaDaTag(file);
-        } else {
-          LimpaCamposEditor();
-        }
+      PopulaEdits();
+      if (Editor.Tags.Count > 1) {
+        LimpaCamposEditor();
       }
     }
 
-    private void LimpaCamposEditor(Boolean carregarCapaGenerica = true) {
+    private void PopulaEdits() {
+      if (Editor.Tags.Count == 1) {
+        File file = Editor.Tags[0];
+        tbTitulo.Text = file.Tag.Title;
+        tbArtistaAlbum.Text = file.Tag.Performers.Length > 0 ? file.Tag.Performers[0] : "";
+        tbAlbum.Text = file.Tag.Album;
+        CarregaCapaDaTag(file);
+      }
+    }
+
+    private void PopulaEditsComItemDaBusca() {
+      tbTitulo.Text = ItemDaBusca.Nome;
+      tbAlbum.Text = ItemDaBusca.Album.Nome;
+      tbArtistaAlbum.Text = ItemDaBusca.Artistas.First().Nome;
+      tbNumero.Text = ItemDaBusca.NumeroDisco.ToString();
+      Editor.RecebeImagemDeUmaBusca(ItemDaBusca.Album.Imagens[0].Data);
+      pbCapa.Image = Editor.ImagemEscolhida;
+    }
+
+    private void LimpaCamposEditor() {
       tbTitulo.Clear();
       tbArtistasParticipantes.Clear();
       tbArtistaAlbum.Clear();
@@ -70,9 +85,7 @@ namespace EditorDeMusicas {
       tbAno.Clear();
       tbCompositor.Clear();
       tbGenero.Clear();
-      if (carregarCapaGenerica) {
-        CarregaCapaGenerica();
-      }
+      CarregaCapaGenerica();
     }
 
     private void Salvar() {
@@ -103,7 +116,7 @@ namespace EditorDeMusicas {
       pbCapa.Image = Editor.ImagemEscolhida;
     }
 
-    private async Task PesquisarUmaMusica() {
+    private async void PesquisarUmaMusica() {
       List<Items>? tracks = await api.BuscaItems(tbArtistaAlbum.Text, tbTitulo.Text);
       if (tracks == null) {
         return;
@@ -114,33 +127,37 @@ namespace EditorDeMusicas {
         return;
       }
       ItemDaBusca = frmTracksRetornadas.SelectedItem;
-      AddInformacoesBusca(false);
+      PopulaEditsComItemDaBusca();
     }
 
-    private async void PesquisarVarias() {
+    private async void PesquisarVariasMusicas() {
       foreach (File tag in Editor.Tags) {
-        String artista = tag.Tag.Performers != null && tag.Tag.Performers.Length > 0 ? tag.Tag.Performers[0] : "";
-        string titulo = String.IsNullOrEmpty(tag.Tag.Title) ? Path.GetFileName(tag.Name) : tag.Tag.Title;
+        String artista = tag.Tag.Performers.Length > 0 && tag.Tag.Performers != null ? tag.Tag.Performers[0] : "";
+        String titulo = String.IsNullOrEmpty(tag.Tag.Title) ? Path.GetFileName(tag.Name) : tag.Tag.Title;
 
-        KeyValuePair<File, List<Items>> resultadosBusca = new KeyValuePair<File, List<Items>>(tag, await api.BuscaItems(artista, titulo));
-
-        foreach (ListViewItem lv in lvArquivos.Items.OfType<ListViewItem>().Where(lv => lv.Text == Path.GetFileName(tag.Name))) {
-          lv.BackColor = Color.Gold;
-          lv.SubItems.Add(Status.Pendente.ToString());
-          lv.Tag = resultadosBusca;
+        if (artista != null) {
+          lblProgressBar.Text = $@"{progressBar.Value}/{Editor.Tags.Count}";
+          progressBar.Value++;
+          KeyValuePair<File, List<Items>> resultadosBusca = new KeyValuePair<File, List<Items>>(tag, await api.BuscaItems(artista, titulo));
+          foreach (ListViewItem lv in lvArquivos.Items.OfType<ListViewItem>().Where(lv => lv.Text == Path.GetFileName(tag.Name))) {
+            lv.BackColor = Color.Gold;
+            lv.SubItems.Add(Status.Pendente.ToString());
+            lv.Tag = resultadosBusca;
+          }
         }
       }
     }
+
     private void lvArquivos_MouseDown(object sender, MouseEventArgs e) {
       RightClicked = e.Button == MouseButtons.Right;
     }
-    private void lvArquivos_RightClicked(object sender, EventArgs e) {
+
+    private void SincronizaBuscaComATag() {
       if (RightClicked) {
-        ListView lvSelecionado = (ListView)sender;
-        if (lvSelecionado.SelectedItems[0].Tag == null || lvSelecionado.SelectedItems.Count > 1) {
+        if (lvArquivos.SelectedItems[0].Tag == null || lvArquivos.SelectedItems.Count > 1) {
           return;
         }
-        KeyValuePair<File, List<Items>> kvp = (KeyValuePair<File, List<Items>>)lvSelecionado.SelectedItems[0].Tag;
+        KeyValuePair<File, List<Items>> kvp = (KeyValuePair<File, List<Items>>)lvArquivos.SelectedItems[0].Tag;
 
         FrmTracksRetornadas frmTracksRetornadas = new(kvp.Value);
         frmTracksRetornadas.ShowDialog();
@@ -148,24 +165,47 @@ namespace EditorDeMusicas {
           return;
         }
         ItemDaBusca = frmTracksRetornadas.SelectedItem;
-        lvSelecionado.SelectedItems[0].BackColor = Color.MediumSeaGreen;
-        lvSelecionado.SelectedItems[0].SubItems.RemoveAt(1);
-        lvSelecionado.SelectedItems[0].SubItems.Add("Sincronizado");
-        AddInformacoesBusca(false);
+        lvArquivos.SelectedItems[0].BackColor = Color.MediumSeaGreen;
+        lvArquivos.SelectedItems[0].SubItems.RemoveAt(1);
+        lvArquivos.SelectedItems[0].SubItems.Add("Sincronizado");
+        PopulaEditsComItemDaBusca();
         Editor.Salvar(ItemDaBusca.Artistas[0].Nome, ItemDaBusca.Album.Nome, ItemDaBusca.Nome);
         lvArquivos.SelectedItems.Clear();
         Editor.Tags.Clear();
       }
     }
 
-    private void AddInformacoesBusca(Boolean CarregaCapaGenerica) {
-      LimpaCamposEditor(CarregaCapaGenerica);
-      tbTitulo.Text = ItemDaBusca.Nome;
-      tbAlbum.Text = ItemDaBusca.Album.Nome;
-      tbArtistaAlbum.Text = ItemDaBusca.Artistas.First().Nome;
-      tbNumero.Text = ItemDaBusca.NumeroDisco.ToString();
-      Editor.RecebeImagemDeUmaBusca(ItemDaBusca.Album.Imagens[0].Data);
-      pbCapa.Image = Editor.ImagemEscolhida;
+    private void AlteraAcessibilidadeControls(Boolean habilitarCampos) {
+      foreach (Control control in Controls) {
+        if (control.GetType() == typeof(TextBox) || control.GetType() == typeof(Button) || control.GetType() == typeof(ListView)) {
+          control.Enabled = habilitarCampos;
+        }
+      }
+    }
+
+    private void Pesquisar() {
+      progressBar.Show();
+      lblProgressBar.Text = "";
+      progressBar.Maximum = Editor.Tags.Count;
+      progressBar.Step = 1; 
+      progressBar.Value = 0;
+
+      if (lvArquivos.SelectedItems.Count == 1) {
+        AlteraAcessibilidadeControls(false);
+        PesquisarUmaMusica();
+      } else if (lvArquivos.SelectedItems.Count > 1) {
+        AlteraAcessibilidadeControls(false);
+        PesquisarVariasMusicas();
+        LimpaCamposEditor();
+      }
+      AlteraAcessibilidadeControls(true);
+      lblProgressBar.Text = $@"{progressBar.Value}/{Editor.Tags.Count}";
+      progressBar.Hide();
+      lblProgressBar.Text = "";
+    }
+
+    private void lvArquivos_RightClicked(object sender, EventArgs e) {
+      SincronizaBuscaComATag();
     }
 
     private void btnSalvar_Click(object sender, EventArgs e) {
@@ -186,12 +226,20 @@ namespace EditorDeMusicas {
     }
 
     private void btnPesquisar_Click(object sender, EventArgs e) {
-      if (Editor.Tags.Count == 1) {
-        PesquisarUmaMusica();
-      } else if (Editor.Tags.Count > 1) {
-        PesquisarVarias();
-        LimpaCamposEditor(true);
-      }
+      Pesquisar();
+    }
+
+    private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e) {
+      BackgroundWorker backgroundWorker = sender as BackgroundWorker;
+      backgroundWorker.ReportProgress(( progressBar.Maximum) / 100);
+    }
+
+    private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
+      progressBar.Value = e.ProgressPercentage;
+    }
+
+    private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+      // TODO: do something with final calculation.
     }
   }
   /*

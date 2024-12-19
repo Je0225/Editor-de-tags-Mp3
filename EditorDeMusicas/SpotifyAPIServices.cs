@@ -13,16 +13,6 @@ namespace EditorDeMusicas {
 
     private Response? Response { get; set; }
 
-    /*public List<Items>? BuscaItems(String artista, String track) {
-      String type = "track";
-      Int32 limit = 50;
-      MontaURL(artista, track, type, limit.ToString());
-
-      Response = JsonConvert.DeserializeObject<Response>(FazRequisicaoTracks().Result);
-      BaixaImagensAsync();
-      return Response?.Tracks.Items;
-    }*/
-
     public async Task<List<Items>?> BuscaItems(String artista, String track) {
       String type = "track";
       Int32 limit = 50;
@@ -66,7 +56,7 @@ namespace EditorDeMusicas {
         HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
         if (response.StatusCode == HttpStatusCode.OK) {
           return response.Content.ReadAsStringAsync().Result;
-        } 
+        }
         RequestTokens();
       }
       return null;

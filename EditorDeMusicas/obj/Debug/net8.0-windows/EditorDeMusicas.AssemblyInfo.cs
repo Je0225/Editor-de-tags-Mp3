@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EditorDeMusicas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bddfacf5e4bfbc3d950f828515c5282af9743841")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5369171bece69a78da351755a2546a3a47a1d07c")]
 [assembly: System.Reflection.AssemblyProductAttribute("EditorDeMusicas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EditorDeMusicas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

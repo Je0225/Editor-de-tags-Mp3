@@ -33,6 +33,7 @@
       clmNomeArquivo = new ColumnHeader();
       clmStatus = new ColumnHeader();
       gbFaixas = new GroupBox();
+      progressBar = new ProgressBar();
       btnPesquisar = new Button();
       lblQuantidadeArquivosRes = new Label();
       lblQtdArquivosText = new Label();
@@ -58,6 +59,7 @@
       lblTitulo = new Label();
       openFileDialog = new OpenFileDialog();
       openFileDialog1 = new OpenFileDialog();
+      lblProgressBar = new Label();
       gbFaixas.SuspendLayout();
       gbPropriedades.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)pbCapa).BeginInit();
@@ -86,7 +88,7 @@
       lvArquivos.FullRowSelect = true;
       lvArquivos.Location = new Point(0, 49);
       lvArquivos.Name = "lvArquivos";
-      lvArquivos.Size = new Size(407, 326);
+      lvArquivos.Size = new Size(407, 307);
       lvArquivos.TabIndex = 2;
       lvArquivos.UseCompatibleStateImageBehavior = false;
       lvArquivos.View = View.Details;
@@ -107,6 +109,8 @@
       // 
       // gbFaixas
       // 
+      gbFaixas.Controls.Add(lblProgressBar);
+      gbFaixas.Controls.Add(progressBar);
       gbFaixas.Controls.Add(btnPesquisar);
       gbFaixas.Controls.Add(lblQuantidadeArquivosRes);
       gbFaixas.Controls.Add(lblQtdArquivosText);
@@ -119,6 +123,14 @@
       gbFaixas.TabIndex = 5;
       gbFaixas.TabStop = false;
       gbFaixas.Text = "Faixas";
+      // 
+      // progressBar
+      // 
+      progressBar.Enabled = false;
+      progressBar.Location = new Point(0, 356);
+      progressBar.Name = "progressBar";
+      progressBar.Size = new Size(407, 19);
+      progressBar.TabIndex = 8;
       // 
       // btnPesquisar
       // 
@@ -133,16 +145,17 @@
       // lblQuantidadeArquivosRes
       // 
       lblQuantidadeArquivosRes.AutoSize = true;
-      lblQuantidadeArquivosRes.Location = new Point(360, 386);
+      lblQuantidadeArquivosRes.BackColor = SystemColors.ButtonHighlight;
+      lblQuantidadeArquivosRes.Location = new Point(363, 387);
       lblQuantidadeArquivosRes.Name = "lblQuantidadeArquivosRes";
       lblQuantidadeArquivosRes.Size = new Size(38, 15);
       lblQuantidadeArquivosRes.TabIndex = 6;
       lblQuantidadeArquivosRes.Text = "label1";
+      lblQuantidadeArquivosRes.TextAlign = ContentAlignment.MiddleRight;
       // 
       // lblQtdArquivosText
       // 
-      lblQtdArquivosText.AutoSize = true;
-      lblQtdArquivosText.Location = new Point(218, 386);
+      lblQtdArquivosText.Location = new Point(221, 386);
       lblQtdArquivosText.Name = "lblQtdArquivosText";
       lblQtdArquivosText.Size = new Size(136, 15);
       lblQtdArquivosText.TabIndex = 5;
@@ -341,6 +354,15 @@
       // 
       openFileDialog1.FileName = "openFileDialog1";
       // 
+      // lblProgressBar
+      // 
+      lblProgressBar.AutoSize = true;
+      lblProgressBar.Location = new Point(181, 358);
+      lblProgressBar.Name = "lblProgressBar";
+      lblProgressBar.Size = new Size(38, 15);
+      lblProgressBar.TabIndex = 9;
+      lblProgressBar.Text = "label1";
+      // 
       // FormPrincipal
       // 
       AutoScaleDimensions = new SizeF(7F, 15F);
@@ -392,5 +414,7 @@
     private Label lblArtistasParticipantes;
     private TextBox tbArtistasParticipantes;
     private ColumnHeader clmStatus;
+    private ProgressBar progressBar;
+    private Label lblProgressBar;
   }
 }
