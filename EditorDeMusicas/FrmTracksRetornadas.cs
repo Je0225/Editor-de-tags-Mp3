@@ -24,7 +24,7 @@ namespace EditorDeMusicas {
           track.Nome,
           track.Album.Nome,
           track.Artistas[0].Nome,
-          track.Album.Imagens[1].Data) {
+          track.Album.Imagens[0].Data) {
           Tag = track
         });
       }

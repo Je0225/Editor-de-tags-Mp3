@@ -107,7 +107,6 @@ namespace EditorDeMusicas {
     public Int32 Largura { get; set; }
 
     public Byte[]? Data {get; set; }
-
   }
 
 }

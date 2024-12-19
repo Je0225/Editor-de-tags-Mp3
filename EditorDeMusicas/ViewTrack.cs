@@ -8,14 +8,12 @@
 
     public Boolean EstaSelecionado { get; set; }
 
-    public Boolean EstaClicado { get; set; }
-
     public ViewTrack(String titulo, String album, String artista, Byte[] DataCapa) {
 
       LblInformacoes = new Label {
         Text = $"Titulo : {titulo}\nAlbum : {album}\nArtista : {artista}\n",
         AutoSize = false,
-        Size = new Size(253, 78),
+        Size = new Size(246, 78),
         Dock = DockStyle.Left,
       };
 
@@ -34,7 +32,7 @@
       Size = new Size(350, 78);
       Location = new Point(12, 12);
       BorderStyle = BorderStyle.FixedSingle;
-      Controls.AddRange(new Control[] { LblInformacoes, pbCapa });
+      Controls.AddRange(new Control[] { pbCapa , LblInformacoes });
     }
 
     private void MouseHoverFrm() {

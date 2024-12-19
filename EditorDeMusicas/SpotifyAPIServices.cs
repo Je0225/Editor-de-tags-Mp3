@@ -28,11 +28,9 @@ namespace EditorDeMusicas {
         return;
       }
       foreach (Items item in Response.Tracks.Items) {
-        foreach (Imagem imagem in item.Album.Imagens) {
-          using HttpClient client = new HttpClient();
-          using Task<Byte[]> stream = client.GetByteArrayAsync(imagem.Url);
-          imagem.Data = stream.Result;
-        }
+        using HttpClient client = new HttpClient();
+        using Task<Byte[]> stream = client.GetByteArrayAsync(item.Album.Imagens[0].Url);
+        item.Album.Imagens[0].Data = stream.Result;
       }
     }
 

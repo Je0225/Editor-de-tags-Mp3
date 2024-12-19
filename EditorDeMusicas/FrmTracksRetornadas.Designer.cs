@@ -26,12 +26,14 @@
       pnlBottom = new Panel();
       btnSelecionar = new Button();
       pnlItems = new FlowLayoutPanel();
+      panel1 = new Panel();
       pnlBottom.SuspendLayout();
+      panel1.SuspendLayout();
       SuspendLayout();
       // 
       // pnlBottom
       // 
-      pnlBottom.Controls.Add(btnSelecionar);
+      pnlBottom.Controls.Add(panel1);
       pnlBottom.Dock = DockStyle.Bottom;
       pnlBottom.Location = new Point(0, 513);
       pnlBottom.Name = "pnlBottom";
@@ -40,7 +42,7 @@
       // 
       // btnSelecionar
       // 
-      btnSelecionar.Location = new Point(277, 6);
+      btnSelecionar.Location = new Point(12, 6);
       btnSelecionar.Name = "btnSelecionar";
       btnSelecionar.Size = new Size(75, 23);
       btnSelecionar.TabIndex = 4;
@@ -57,6 +59,15 @@
       pnlItems.Size = new Size(364, 513);
       pnlItems.TabIndex = 5;
       // 
+      // panel1
+      // 
+      panel1.Controls.Add(btnSelecionar);
+      panel1.Dock = DockStyle.Right;
+      panel1.Location = new Point(265, 0);
+      panel1.Name = "panel1";
+      panel1.Size = new Size(99, 38);
+      panel1.TabIndex = 5;
+      // 
       // FrmTracksRetornadas
       // 
       AutoScaleDimensions = new SizeF(7F, 15F);
@@ -69,6 +80,7 @@
       Name = "FrmTracksRetornadas";
       Text = "Resultados";
       pnlBottom.ResumeLayout(false);
+      panel1.ResumeLayout(false);
       ResumeLayout(false);
     }
 
@@ -76,5 +88,6 @@
     private Panel pnlBottom;
     private FlowLayoutPanel pnlItems;
     private Button btnSelecionar;
+    private Panel panel1;
   }
 }
