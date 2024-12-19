@@ -33,6 +33,7 @@
       clmNomeArquivo = new ColumnHeader();
       clmStatus = new ColumnHeader();
       gbFaixas = new GroupBox();
+      lblProgressBar = new Label();
       progressBar = new ProgressBar();
       btnPesquisar = new Button();
       lblQuantidadeArquivosRes = new Label();
@@ -59,7 +60,6 @@
       lblTitulo = new Label();
       openFileDialog = new OpenFileDialog();
       openFileDialog1 = new OpenFileDialog();
-      lblProgressBar = new Label();
       gbFaixas.SuspendLayout();
       gbPropriedades.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)pbCapa).BeginInit();
@@ -123,6 +123,15 @@
       gbFaixas.TabIndex = 5;
       gbFaixas.TabStop = false;
       gbFaixas.Text = "Faixas";
+      // 
+      // lblProgressBar
+      // 
+      lblProgressBar.AutoSize = true;
+      lblProgressBar.Location = new Point(181, 358);
+      lblProgressBar.Name = "lblProgressBar";
+      lblProgressBar.Size = new Size(38, 15);
+      lblProgressBar.TabIndex = 9;
+      lblProgressBar.Text = "label1";
       // 
       // progressBar
       // 
@@ -353,15 +362,6 @@
       // openFileDialog1
       // 
       openFileDialog1.FileName = "openFileDialog1";
-      // 
-      // lblProgressBar
-      // 
-      lblProgressBar.AutoSize = true;
-      lblProgressBar.Location = new Point(181, 358);
-      lblProgressBar.Name = "lblProgressBar";
-      lblProgressBar.Size = new Size(38, 15);
-      lblProgressBar.TabIndex = 9;
-      lblProgressBar.Text = "label1";
       // 
       // FormPrincipal
       // 

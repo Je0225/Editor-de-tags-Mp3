@@ -13,6 +13,8 @@ namespace EditorDeMusicas {
 
     private Boolean RightClicked { get; set; }
 
+    private Boolean Pesquisou { get; set; } = false;
+
     public FormPrincipal() {
       InitializeComponent();
       Editor = new EditorTags();
@@ -116,11 +118,15 @@ namespace EditorDeMusicas {
       pbCapa.Image = Editor.ImagemEscolhida;
     }
 
-    private async void PesquisarUmaMusica() {
-      List<Items>? tracks = await api.BuscaItems(tbArtistaAlbum.Text, tbTitulo.Text);
+    private async Task<List<Items>?> Busca() {
+       return await api.BuscaItems(tbArtistaAlbum.Text, tbTitulo.Text);
+    }
+
+    private void PesquisarUmaMusica(List<Items>? tracks) {
       if (tracks == null) {
         return;
       }
+      Pesquisou = true;
       FrmTracksRetornadas frmTracksRetornadas = new(tracks);
       frmTracksRetornadas.ShowDialog();
       if (frmTracksRetornadas.DialogResult != DialogResult.OK || frmTracksRetornadas.SelectedItem == null) {
@@ -130,15 +136,39 @@ namespace EditorDeMusicas {
       PopulaEditsComItemDaBusca();
     }
 
+    private async Task ProgressBarAsyncUmaPesquisa() {
+      progressBar.Show();
+      lblProgressBar.Text = "";
+      progressBar.Maximum = Editor.Tags.Count;
+      progressBar.Style = ProgressBarStyle.Marquee;
+      progressBar.MarqueeAnimationSpeed = 4;
+      progressBar.Value = 1;
+      AlteraAcessibilidadeControls(false);
+      List<Items>? tracks = await Task.Run(Busca) ;
+      AlteraAcessibilidadeControls(true);
+      lblProgressBar.Text = "";
+      progressBar.Hide();
+      PesquisarUmaMusica(tracks);
+    }
+
     private async void PesquisarVariasMusicas() {
+      progressBar.Show();
+      lblProgressBar.Text = "";
+      progressBar.Maximum = Editor.Tags.Count;
+      progressBar.Style = ProgressBarStyle.Continuous;
+      progressBar.Step = 1;
+      progressBar.Value = 0;
+      LimpaCamposEditor();
+      AlteraAcessibilidadeControls(false);
       foreach (File tag in Editor.Tags) {
         String artista = tag.Tag.Performers.Length > 0 && tag.Tag.Performers != null ? tag.Tag.Performers[0] : "";
         String titulo = String.IsNullOrEmpty(tag.Tag.Title) ? Path.GetFileName(tag.Name) : tag.Tag.Title;
 
         if (artista != null) {
           lblProgressBar.Text = $@"{progressBar.Value}/{Editor.Tags.Count}";
+          List<Items>? tracks = await Task.Run(async () => await api.BuscaItems(artista, titulo));
           progressBar.Value++;
-          KeyValuePair<File, List<Items>> resultadosBusca = new KeyValuePair<File, List<Items>>(tag, await api.BuscaItems(artista, titulo));
+          KeyValuePair<File, List<Items>> resultadosBusca = new KeyValuePair<File, List<Items>>(tag, tracks);
           foreach (ListViewItem lv in lvArquivos.Items.OfType<ListViewItem>().Where(lv => lv.Text == Path.GetFileName(tag.Name))) {
             lv.BackColor = Color.Gold;
             lv.SubItems.Add(Status.Pendente.ToString());
@@ -146,6 +176,11 @@ namespace EditorDeMusicas {
           }
         }
       }
+      lblProgressBar.Text = $@"{progressBar.Value}/{Editor.Tags.Count}";
+      await Task.Delay(1000);
+      AlteraAcessibilidadeControls(true);
+      lblProgressBar.Text = "";
+      progressBar.Hide();
     }
 
     private void lvArquivos_MouseDown(object sender, MouseEventArgs e) {
@@ -176,32 +211,15 @@ namespace EditorDeMusicas {
     }
 
     private void AlteraAcessibilidadeControls(Boolean habilitarCampos) {
-      foreach (Control control in Controls) {
-        if (control.GetType() == typeof(TextBox) || control.GetType() == typeof(Button) || control.GetType() == typeof(ListView)) {
-          control.Enabled = habilitarCampos;
+      foreach (Control control  in Controls) {
+        if (control.GetType() == typeof(GroupBox)) {
+          foreach (Control child in control.Controls) {
+            if (child.GetType() == typeof(TextBox) || child.GetType() == typeof(Button) || child.GetType() == typeof(ListView)) {
+              child.Enabled = habilitarCampos;
+            }
+          }
         }
       }
-    }
-
-    private void Pesquisar() {
-      progressBar.Show();
-      lblProgressBar.Text = "";
-      progressBar.Maximum = Editor.Tags.Count;
-      progressBar.Step = 1; 
-      progressBar.Value = 0;
-
-      if (lvArquivos.SelectedItems.Count == 1) {
-        AlteraAcessibilidadeControls(false);
-        PesquisarUmaMusica();
-      } else if (lvArquivos.SelectedItems.Count > 1) {
-        AlteraAcessibilidadeControls(false);
-        PesquisarVariasMusicas();
-        LimpaCamposEditor();
-      }
-      AlteraAcessibilidadeControls(true);
-      lblProgressBar.Text = $@"{progressBar.Value}/{Editor.Tags.Count}";
-      progressBar.Hide();
-      lblProgressBar.Text = "";
     }
 
     private void lvArquivos_RightClicked(object sender, EventArgs e) {
@@ -226,7 +244,11 @@ namespace EditorDeMusicas {
     }
 
     private void btnPesquisar_Click(object sender, EventArgs e) {
-      Pesquisar();
+      if (Editor.Tags.Count == 1) {
+        ProgressBarAsyncUmaPesquisa();
+      } else if (Editor.Tags.Count > 1) {
+        PesquisarVariasMusicas();
+      }
     }
 
     private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e) {

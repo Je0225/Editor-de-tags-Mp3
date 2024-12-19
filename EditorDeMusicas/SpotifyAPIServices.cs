@@ -19,11 +19,11 @@ namespace EditorDeMusicas {
       MontaURL(artista, track, type, limit.ToString());
 
       Response = JsonConvert.DeserializeObject<Response>(await FazRequisicaoTracks());
-      BaixaImagensAsync();
+      BaixaImagens();
       return Response?.Tracks.Items;
     }
 
-    private void BaixaImagensAsync() {
+    private void BaixaImagens() {
       if (Response?.Tracks.Items == null) {
         return;
       }
