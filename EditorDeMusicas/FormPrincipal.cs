@@ -42,7 +42,7 @@ namespace EditorDeMusicas {
       lblQuantidadeArquivosRes.Text = nomesArquivos.Length.ToString();
     }
 
-    private void MudaSelecionadas() { 
+    private void MudaSelecionadas() {
       Editor.Tags.Clear();
       ListView.SelectedListViewItemCollection sl = lvArquivos.SelectedItems;
       String[] selecionados = new String[sl.Count];
@@ -56,17 +56,37 @@ namespace EditorDeMusicas {
       }
     }
 
+    private String PopulaEditsComArrays(String[] nomes) {
+      if (nomes == null || nomes.Length == 0) {
+        return "";
+      }
+      String conteudo = "";
+      foreach (String nome in nomes) {
+        conteudo += nome + "; ";
+      }
+      return conteudo;
+    }
+
+    private String MontaStringNomeArtistas(List<Artists> artistas) {
+      if (artistas == null || artistas.Count == 0) {
+        return "";
+      }
+      String nomes = "";
+      foreach (Artists artista in artistas) {
+        nomes += artista.Nome + ";";
+      }
+      return nomes;
+    }
+
     private void PopulaEdits() {
       if (Editor.Tags.Count == 1) {
         File file = Editor.Tags[0];
         tbTitulo.Text = file.Tag.Title;
-        tbArtistaAlbum.Text = file.Tag.Performers.Length > 0 ? file.Tag.Performers[0] : "";
+        tbArtistaAlbum.Text = PopulaEditsComArrays(file.Tag.AlbumArtists);
         tbAlbum.Text = file.Tag.Album;
         tbAno.Text = file.Tag.Year.ToString();
-        tbArtistasParticipantes.Text = file.Tag.Performers.Length > 1 ? file.Tag.Performers[1] : "";
-        //tbCompositor.Text = file.Tag.Composers.Length >;
-        //tbGenero;
-        //tbNumero;
+        tbArtistasParticipantes.Text = PopulaEditsComArrays(file.Tag.Performers);
+        tbNumero.Text = file.Tag.Track.ToString();
         CarregaCapaDaTag(file);
       }
     }
@@ -87,13 +107,11 @@ namespace EditorDeMusicas {
       tbAlbum.Clear();
       tbNumero.Clear();
       tbAno.Clear();
-      tbCompositor.Clear();
-      tbGenero.Clear();
       CarregaCapaGenerica();
     }
 
     private void Salvar() {
-      Editor.Salvar(tbArtistaAlbum.Text, tbAlbum.Text, tbTitulo.Text);
+      Editor.Salvar(tbArtistaAlbum.Text, tbAlbum.Text, tbTitulo.Text, tbArtistasParticipantes.Text, tbAno.Text, tbAno.Text);
       PopulaListView();
       LimpaCamposEditor();
     }
@@ -200,11 +218,11 @@ namespace EditorDeMusicas {
         if (ItemDaBusca == null) {
           return;
         }
-        lvArquivos.SelectedItems[0].BackColor = Color.MediumSeaGreen;
+        lvArquivos.SelectedItems[0].BackColor = Color.MediumSeaGreen; 
         lvArquivos.SelectedItems[0].SubItems.RemoveAt(1);
         lvArquivos.SelectedItems[0].SubItems.Add("Sincronizado");
         PopulaEditsComItemDaBusca();
-        Editor.Salvar(ItemDaBusca.Artistas[0].Nome, ItemDaBusca.Album.Nome, ItemDaBusca.Nome);
+        Editor.Salvar(MontaStringNomeArtistas(ItemDaBusca.Album.Artistas), ItemDaBusca.Album.Nome, ItemDaBusca.Nome, MontaStringNomeArtistas(ItemDaBusca.Artistas), ItemDaBusca.Album.DataLancamento, ItemDaBusca.NumeroDisco.ToString());
         lvArquivos.SelectedItems.Clear();
         Editor.Tags.Clear();
       }
@@ -215,7 +233,7 @@ namespace EditorDeMusicas {
     }
 
     private void AlteraAcessibilidadeControls(Boolean habilitarCampos) {
-      foreach (Control control  in Controls) {
+      foreach (Control control in Controls) {
         if (control.GetType() == typeof(GroupBox)) {
           foreach (Control child in control.Controls) {
             if (child.GetType() == typeof(TextBox) || child.GetType() == typeof(Button) || child.GetType() == typeof(ListView)) {
@@ -251,12 +269,19 @@ namespace EditorDeMusicas {
       Pesquisar();
     }
 
+    private void TextBox_Leave(object sender, EventArgs e) {
+      TextBox tb = (TextBox)sender;
+      if (tb.Text.Trim() != "" && !tb.Text.Contains(";")) {
+        tb.Text = tb.Text.TrimEnd().TrimStart();
+        tb.Text += ";";
+      }
+    }
   }
   /*
    formPrincipal
-   Todo: Add more fields pf tag properties;
-     - Ano, numero, genrero, fornecedor, artistas do album separados por virgula 
-      (informaçoes spotify, codificado por editor de tags, url artista no spotify),
-      Compositor, 
+   Todo: Validate how to write the tb artists by hand
+
+   frmTracksReturned
+   Todo: Displays all the artists in the viewTrack object
   */
 }

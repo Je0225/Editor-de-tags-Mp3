@@ -41,12 +41,8 @@
       gbPropriedades = new GroupBox();
       lblArtistasParticipantes = new Label();
       tbArtistasParticipantes = new TextBox();
-      lblCompositor = new Label();
-      lblGenero = new Label();
       lblAno = new Label();
-      tbCompositor = new TextBox();
       btnProcurarImagem = new Button();
-      tbGenero = new TextBox();
       tbAno = new TextBox();
       pbCapa = new PictureBox();
       tbNumero = new TextBox();
@@ -174,12 +170,8 @@
       // 
       gbPropriedades.Controls.Add(lblArtistasParticipantes);
       gbPropriedades.Controls.Add(tbArtistasParticipantes);
-      gbPropriedades.Controls.Add(lblCompositor);
-      gbPropriedades.Controls.Add(lblGenero);
       gbPropriedades.Controls.Add(lblAno);
-      gbPropriedades.Controls.Add(tbCompositor);
       gbPropriedades.Controls.Add(btnProcurarImagem);
-      gbPropriedades.Controls.Add(tbGenero);
       gbPropriedades.Controls.Add(tbAno);
       gbPropriedades.Controls.Add(pbCapa);
       gbPropriedades.Controls.Add(tbNumero);
@@ -213,24 +205,7 @@
       tbArtistasParticipantes.Name = "tbArtistasParticipantes";
       tbArtistasParticipantes.Size = new Size(188, 23);
       tbArtistasParticipantes.TabIndex = 20;
-      // 
-      // lblCompositor
-      // 
-      lblCompositor.AutoSize = true;
-      lblCompositor.Location = new Point(50, 217);
-      lblCompositor.Name = "lblCompositor";
-      lblCompositor.Size = new Size(70, 15);
-      lblCompositor.TabIndex = 19;
-      lblCompositor.Text = "Compositor";
-      // 
-      // lblGenero
-      // 
-      lblGenero.AutoSize = true;
-      lblGenero.Location = new Point(75, 194);
-      lblGenero.Name = "lblGenero";
-      lblGenero.Size = new Size(45, 15);
-      lblGenero.TabIndex = 17;
-      lblGenero.Text = "Gênero";
+      tbArtistasParticipantes.Leave += TextBox_Leave;
       // 
       // lblAno
       // 
@@ -241,29 +216,15 @@
       lblAno.TabIndex = 15;
       lblAno.Text = "Ano";
       // 
-      // tbCompositor
-      // 
-      tbCompositor.Location = new Point(126, 217);
-      tbCompositor.Name = "tbCompositor";
-      tbCompositor.Size = new Size(188, 23);
-      tbCompositor.TabIndex = 14;
-      // 
       // btnProcurarImagem
       // 
-      btnProcurarImagem.Location = new Point(91, 256);
+      btnProcurarImagem.Location = new Point(91, 196);
       btnProcurarImagem.Name = "btnProcurarImagem";
       btnProcurarImagem.Size = new Size(75, 41);
       btnProcurarImagem.TabIndex = 10;
       btnProcurarImagem.Text = "Procurar Imagem";
       btnProcurarImagem.UseVisualStyleBackColor = true;
       btnProcurarImagem.Click += btnProcurarImagem_Click;
-      // 
-      // tbGenero
-      // 
-      tbGenero.Location = new Point(126, 191);
-      tbGenero.Name = "tbGenero";
-      tbGenero.Size = new Size(188, 23);
-      tbGenero.TabIndex = 12;
       // 
       // tbAno
       // 
@@ -274,7 +235,7 @@
       // 
       // pbCapa
       // 
-      pbCapa.Location = new Point(172, 256);
+      pbCapa.Location = new Point(172, 196);
       pbCapa.Name = "pbCapa";
       pbCapa.Size = new Size(142, 143);
       pbCapa.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -319,6 +280,7 @@
       tbArtistaAlbum.Name = "tbArtistaAlbum";
       tbArtistaAlbum.Size = new Size(188, 23);
       tbArtistaAlbum.TabIndex = 4;
+      tbArtistaAlbum.Leave += TextBox_Leave;
       // 
       // lblArtistaAlbum
       // 
@@ -405,12 +367,8 @@
     private OpenFileDialog openFileDialog;
     private OpenFileDialog openFileDialog1;
     private Button btnPesquisar;
-    private Label lblGenero;
     private Label lblAno;
-    private TextBox tbCompositor;
-    private TextBox tbGenero;
     private TextBox tbAno;
-    private Label lblCompositor;
     private Label lblArtistasParticipantes;
     private TextBox tbArtistasParticipantes;
     private ColumnHeader clmStatus;

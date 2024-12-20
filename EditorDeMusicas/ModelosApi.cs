@@ -2,19 +2,6 @@
 
 namespace EditorDeMusicas {
 
-  public class Artista {
-
-    [JsonProperty("idArtist")]
-    public String Id { get; set; }
-
-    [JsonProperty("strArtist")]
-    public String Nome { get; set; }
-
-    [JsonProperty("strGenre")]
-    public String Genero { get; set; }
-
-  }
-
   public class Tokens {
 
     [JsonProperty("access_token")]

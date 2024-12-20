@@ -58,18 +58,21 @@ namespace EditorDeMusicas {
         }
       }
     }
-
-    public void Salvar(String artista, String album, String titulo = "") {
+    // TODO: Create a class to pass the tag info
+    public void Salvar(String artistas, String album, String titulo = "", String artistasParticipantes = "", String ano = "",  String numero = "") {
       if (Tags.Count == 0) {
         return;
       }
       String? mensagem = null;
       foreach ( File faixa in Tags) {
-        faixa.Tag.Performers = new[] { artista };
+        faixa.Tag.AlbumArtists = artistas.Split(";");
+        faixa.Tag.Performers = artistasParticipantes.Split(";");
         faixa.Tag.Album = album;
+        faixa.Tag.Year = Convert.ToUInt32(ano);
         SetaCapaNaTag(faixa);
         if (Tags.Count == 1) {
           faixa.Tag.Title = titulo;
+          faixa.Tag.Track = Convert.ToUInt32(numero);
           faixa.Save();
           string newpath = Diretorio + "\\" + titulo + ".mp3";
           System.IO.File.Move(faixa.Name, newpath);
