@@ -178,7 +178,11 @@ namespace EditorDeMusicas {
       InicializaProgressBar();
 
       if (Editor.Tags.Count == 1) {
-        tracks = await Task.Run(async () => await api.BuscaItems(tbArtistaAlbum.Text, tbTitulo.Text));
+        File tag = Editor.Tags[0];
+        String artista = tag.Tag.Performers.Length > 0 && tag.Tag.Performers != null ? tag.Tag.Performers[0] : "";
+        String titulo = String.IsNullOrEmpty(tag.Tag.Title) ? Path.GetFileNameWithoutExtension(tag.Name) : tag.Tag.Title;
+
+        tracks = await Task.Run(async () => await api.BuscaItems(artista, titulo));
         StopaProgressBar(false);
         AbreJanelaSeleçãoBusca(tracks);
         if (ItemDaBusca == null) {

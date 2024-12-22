@@ -36,9 +36,12 @@ namespace EditorDeMusicas {
 
     private void MontaURL(String artista, String track, String type, String limit) {
       Url = "https://api.spotify.com/v1/search?q=[QUERY]&limit=[LIMIT]&type=[TYPE]";
-      String q = "track:[TRACK] artist:[ARTIST]";
-
-      q = q.Replace("[TRACK]", track).Replace("[ARTIST]", artista);
+      String q = "track:[TRACK]";
+      q = q.Replace("[TRACK]", track);
+      if (!String.IsNullOrEmpty(artista)) {
+        q += " artist:[ARTIST]";
+        q = q.Replace("[ARTIST]", artista);
+      }
       q = HttpUtility.UrlEncode(q, Encoding.UTF8);
       Url = Url.Replace("[QUERY]", q).Replace("[TYPE]", type).Replace("[LIMIT]", limit);
     }

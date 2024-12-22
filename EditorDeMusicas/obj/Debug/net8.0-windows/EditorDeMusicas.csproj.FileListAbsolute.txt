@@ -85,3 +85,4 @@ D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusi
 D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.pdb
 D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.genruntimeconfig.cache
 D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\ref\EditorDeMusicas.dll
+D:\Arquivos Jeni\arquivos\fontes_de_projetos\CSharp\EditorDeMusicas\EditorDeMusicas\obj\Debug\net8.0-windows\EditorDeMusicas.sourcelink.json
