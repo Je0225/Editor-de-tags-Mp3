@@ -275,7 +275,7 @@ namespace EditorDeMusicas {
 
     private void TextBox_Leave(object sender, EventArgs e) {
       TextBox tb = (TextBox)sender;
-      if (tb.Text.Trim() != "" && !tb.Text.Contains(";")) {
+      if (tb.Text.Trim() != "" && tb.Text.Trim() != ";" && !tb.Text.Contains(";")) {
         tb.Text = tb.Text.TrimEnd().TrimStart();
         tb.Text += ";";
       }
@@ -284,6 +284,7 @@ namespace EditorDeMusicas {
   /*
    formPrincipal
    Todo: Validate how to write the tb artists by hand
+   Todo: Add field to edit the tags file name.
 
    frmTracksReturned
    Todo: Displays all the artists in the viewTrack object

@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|d:\\arquivos jeni\\arquivos\\fontes_de_projetos\\csharp\\editordemusicas\\editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|d:\\arquivos jeni\\arquivos\\fontes_de_projetos\\csharp\\editordemusicas\\editordemusicas\\spotifyapiservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\spotifyapiservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|d:\\arquivos jeni\\arquivos\\fontes_de_projetos\\csharp\\editordemusicas\\editordemusicas\\frmtracksretornadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\frmtracksretornadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|d:\\arquivos jeni\\arquivos\\fontes_de_projetos\\csharp\\editordemusicas\\editordemusicas\\frmtracksretornadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\frmtracksretornadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|d:\\arquivos jeni\\arquivos\\fontes_de_projetos\\csharp\\editordemusicas\\editordemusicas\\editortags.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,28 +42,40 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmTracksRetornadas.cs",
+              "DocumentMoniker": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FrmTracksRetornadas.cs",
+              "RelativeDocumentMoniker": "EditorDeMusicas\\FrmTracksRetornadas.cs",
+              "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FrmTracksRetornadas.cs",
+              "RelativeToolTip": "EditorDeMusicas\\FrmTracksRetornadas.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T21:37:22.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FormPrincipal.cs [Projeto]",
+              "DocumentMoniker": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs",
+              "RelativeDocumentMoniker": "EditorDeMusicas\\FormPrincipal.cs",
+              "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs [Projeto]",
+              "RelativeToolTip": "EditorDeMusicas\\FormPrincipal.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T21:33:14.784Z",
+              "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "SpotifyAPIServices.cs",
               "DocumentMoniker": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\SpotifyAPIServices.cs",
               "RelativeDocumentMoniker": "EditorDeMusicas\\SpotifyAPIServices.cs",
               "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\SpotifyAPIServices.cs",
               "RelativeToolTip": "EditorDeMusicas\\SpotifyAPIServices.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAACIAAAAFAAAA",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAAACoAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-22T19:40:36.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EditorTags.cs",
-              "DocumentMoniker": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
-              "RelativeDocumentMoniker": "EditorDeMusicas\\EditorTags.cs",
-              "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
-              "RelativeToolTip": "EditorDeMusicas\\EditorTags.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAIwEMAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-22T19:18:54.903Z",
               "EditorCaption": ""
             },
             {
@@ -66,22 +86,35 @@
               "RelativeDocumentMoniker": "EditorDeMusicas\\FormPrincipal.cs",
               "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs",
               "RelativeToolTip": "EditorDeMusicas\\FormPrincipal.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAmAAAA",
+              "ViewState": "AQIAALAAAAAAAAAAAAAAAL4AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-16T11:32:29.049Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormPrincipal.cs [Projeto]",
-              "DocumentMoniker": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs",
-              "RelativeDocumentMoniker": "EditorDeMusicas\\FormPrincipal.cs",
-              "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs [Projeto]",
-              "RelativeToolTip": "EditorDeMusicas\\FormPrincipal.cs [Projeto]",
+              "DocumentIndex": 4,
+              "Title": "FrmTracksRetornadas.cs [Projeto]",
+              "DocumentMoniker": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FrmTracksRetornadas.cs",
+              "RelativeDocumentMoniker": "EditorDeMusicas\\FrmTracksRetornadas.cs",
+              "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FrmTracksRetornadas.cs [Projeto]",
+              "RelativeToolTip": "EditorDeMusicas\\FrmTracksRetornadas.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T19:10:39.761Z",
+              "WhenOpened": "2024-12-22T21:37:20.256Z",
               "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EditorTags.cs",
+              "DocumentMoniker": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
+              "RelativeDocumentMoniker": "EditorDeMusicas\\EditorTags.cs",
+              "ToolTip": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
+              "RelativeToolTip": "EditorDeMusicas\\EditorTags.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAAAEMAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T19:18:54.903Z",
+              "EditorCaption": ""
             }
           ]
         },

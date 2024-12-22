@@ -49,6 +49,7 @@ namespace EditorDeMusicas {
       }
       return NomesTags.Keys.ToArray();
     }
+
     public void PopulaListaTags(String[] selecionadas) {
       Tags.Clear();
       foreach (String nome in selecionadas) {

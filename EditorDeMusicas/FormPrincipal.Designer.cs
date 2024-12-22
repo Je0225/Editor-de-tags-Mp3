@@ -56,6 +56,8 @@
       lblTitulo = new Label();
       openFileDialog = new OpenFileDialog();
       openFileDialog1 = new OpenFileDialog();
+      tbArquivo = new TextBox();
+      lblNomeArquivo = new Label();
       gbFaixas.SuspendLayout();
       gbPropriedades.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)pbCapa).BeginInit();
@@ -168,6 +170,8 @@
       // 
       // gbPropriedades
       // 
+      gbPropriedades.Controls.Add(lblNomeArquivo);
+      gbPropriedades.Controls.Add(tbArquivo);
       gbPropriedades.Controls.Add(lblArtistasParticipantes);
       gbPropriedades.Controls.Add(tbArtistasParticipantes);
       gbPropriedades.Controls.Add(lblAno);
@@ -193,7 +197,7 @@
       // lblArtistasParticipantes
       // 
       lblArtistasParticipantes.AutoSize = true;
-      lblArtistasParticipantes.Location = new Point(4, 76);
+      lblArtistasParticipantes.Location = new Point(4, 104);
       lblArtistasParticipantes.Name = "lblArtistasParticipantes";
       lblArtistasParticipantes.Size = new Size(117, 15);
       lblArtistasParticipantes.TabIndex = 21;
@@ -201,7 +205,7 @@
       // 
       // tbArtistasParticipantes
       // 
-      tbArtistasParticipantes.Location = new Point(126, 73);
+      tbArtistasParticipantes.Location = new Point(126, 101);
       tbArtistasParticipantes.Name = "tbArtistasParticipantes";
       tbArtistasParticipantes.Size = new Size(188, 23);
       tbArtistasParticipantes.TabIndex = 20;
@@ -210,7 +214,7 @@
       // lblAno
       // 
       lblAno.AutoSize = true;
-      lblAno.Location = new Point(91, 134);
+      lblAno.Location = new Point(91, 162);
       lblAno.Name = "lblAno";
       lblAno.Size = new Size(29, 15);
       lblAno.TabIndex = 15;
@@ -218,7 +222,7 @@
       // 
       // btnProcurarImagem
       // 
-      btnProcurarImagem.Location = new Point(91, 196);
+      btnProcurarImagem.Location = new Point(91, 225);
       btnProcurarImagem.Name = "btnProcurarImagem";
       btnProcurarImagem.Size = new Size(75, 41);
       btnProcurarImagem.TabIndex = 10;
@@ -228,14 +232,14 @@
       // 
       // tbAno
       // 
-      tbAno.Location = new Point(126, 134);
+      tbAno.Location = new Point(126, 162);
       tbAno.Name = "tbAno";
       tbAno.Size = new Size(188, 23);
       tbAno.TabIndex = 11;
       // 
       // pbCapa
       // 
-      pbCapa.Location = new Point(172, 196);
+      pbCapa.Location = new Point(172, 225);
       pbCapa.Name = "pbCapa";
       pbCapa.Size = new Size(142, 143);
       pbCapa.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -244,7 +248,7 @@
       // 
       // tbNumero
       // 
-      tbNumero.Location = new Point(126, 163);
+      tbNumero.Location = new Point(126, 191);
       tbNumero.Name = "tbNumero";
       tbNumero.Size = new Size(188, 23);
       tbNumero.TabIndex = 8;
@@ -252,7 +256,7 @@
       // lblNumero
       // 
       lblNumero.AutoSize = true;
-      lblNumero.Location = new Point(69, 165);
+      lblNumero.Location = new Point(69, 193);
       lblNumero.Name = "lblNumero";
       lblNumero.Size = new Size(51, 15);
       lblNumero.TabIndex = 7;
@@ -260,7 +264,7 @@
       // 
       // tbAlbum
       // 
-      tbAlbum.Location = new Point(126, 105);
+      tbAlbum.Location = new Point(126, 133);
       tbAlbum.Name = "tbAlbum";
       tbAlbum.Size = new Size(188, 23);
       tbAlbum.TabIndex = 6;
@@ -268,7 +272,7 @@
       // lblAlbum
       // 
       lblAlbum.AutoSize = true;
-      lblAlbum.Location = new Point(77, 108);
+      lblAlbum.Location = new Point(77, 136);
       lblAlbum.Name = "lblAlbum";
       lblAlbum.Size = new Size(43, 15);
       lblAlbum.TabIndex = 5;
@@ -276,7 +280,7 @@
       // 
       // tbArtistaAlbum
       // 
-      tbArtistaAlbum.Location = new Point(126, 44);
+      tbArtistaAlbum.Location = new Point(126, 72);
       tbArtistaAlbum.Name = "tbArtistaAlbum";
       tbArtistaAlbum.Size = new Size(188, 23);
       tbArtistaAlbum.TabIndex = 4;
@@ -285,7 +289,7 @@
       // lblArtistaAlbum
       // 
       lblArtistaAlbum.AutoSize = true;
-      lblArtistaAlbum.Location = new Point(23, 47);
+      lblArtistaAlbum.Location = new Point(23, 75);
       lblArtistaAlbum.Name = "lblArtistaAlbum";
       lblArtistaAlbum.Size = new Size(97, 15);
       lblArtistaAlbum.TabIndex = 3;
@@ -293,7 +297,7 @@
       // 
       // tbTitulo
       // 
-      tbTitulo.Location = new Point(126, 15);
+      tbTitulo.Location = new Point(126, 43);
       tbTitulo.Name = "tbTitulo";
       tbTitulo.Size = new Size(188, 23);
       tbTitulo.TabIndex = 2;
@@ -311,7 +315,7 @@
       // lblTitulo
       // 
       lblTitulo.AutoSize = true;
-      lblTitulo.Location = new Point(83, 18);
+      lblTitulo.Location = new Point(83, 46);
       lblTitulo.Name = "lblTitulo";
       lblTitulo.Size = new Size(37, 15);
       lblTitulo.TabIndex = 0;
@@ -324,6 +328,22 @@
       // openFileDialog1
       // 
       openFileDialog1.FileName = "openFileDialog1";
+      // 
+      // tbArquivo
+      // 
+      tbArquivo.Location = new Point(126, 14);
+      tbArquivo.Name = "tbArquivo";
+      tbArquivo.Size = new Size(188, 23);
+      tbArquivo.TabIndex = 22;
+      // 
+      // lblNomeArquivo
+      // 
+      lblNomeArquivo.AutoSize = true;
+      lblNomeArquivo.Location = new Point(71, 17);
+      lblNomeArquivo.Name = "lblNomeArquivo";
+      lblNomeArquivo.Size = new Size(49, 15);
+      lblNomeArquivo.TabIndex = 23;
+      lblNomeArquivo.Text = "Arquivo";
       // 
       // FormPrincipal
       // 
@@ -374,5 +394,7 @@
     private ColumnHeader clmStatus;
     private ProgressBar progressBar;
     private Label lblProgressBar;
+    private Label lblNomeArquivo;
+    private TextBox tbArquivo;
   }
 }
