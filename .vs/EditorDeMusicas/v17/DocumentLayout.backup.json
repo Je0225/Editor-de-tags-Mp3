@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|c:\\users\\user\\documents\\sources\\csharp\\editordemusicas\\editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|c:\\users\\user\\documents\\sources\\csharp\\editordemusicas\\editordemusicas\\editortags.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\editortags.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|c:\\users\\user\\documents\\sources\\csharp\\editordemusicas\\editordemusicas\\frmtracksretornadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\frmtracksretornadas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|c:\\users\\user\\documents\\sources\\csharp\\editordemusicas\\editordemusicas\\modelosapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\modelosapi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|c:\\users\\user\\documents\\sources\\csharp\\editordemusicas\\editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|c:\\users\\user\\documents\\sources\\csharp\\editordemusicas\\editordemusicas\\spotifyapiservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\spotifyapiservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|c:\\users\\user\\documents\\sources\\csharp\\editordemusicas\\editordemusicas\\viewtrack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\viewtrack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5294325F-5663-4B29-9082-E6FB067656F9}|EditorDeMusicas\\EditorDeMusicas.csproj|solutionrelative:editordemusicas\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,80 +34,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ModelosApi.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\ModelosApi.cs",
-              "RelativeDocumentMoniker": "EditorDeMusicas\\ModelosApi.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\ModelosApi.cs",
-              "RelativeToolTip": "EditorDeMusicas\\ModelosApi.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA1wB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T20:25:27.619Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FrmTracksRetornadas.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FrmTracksRetornadas.cs",
-              "RelativeDocumentMoniker": "EditorDeMusicas\\FrmTracksRetornadas.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FrmTracksRetornadas.cs",
-              "RelativeToolTip": "EditorDeMusicas\\FrmTracksRetornadas.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T20:24:48.844Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "SpotifyAPIServices.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\SpotifyAPIServices.cs",
               "RelativeDocumentMoniker": "EditorDeMusicas\\SpotifyAPIServices.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\SpotifyAPIServices.cs",
               "RelativeToolTip": "EditorDeMusicas\\SpotifyAPIServices.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAIwCwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T18:27:23.767Z",
+              "WhenOpened": "2024-12-23T19:33:47.868Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ViewTrack.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\ViewTrack.cs",
-              "RelativeDocumentMoniker": "EditorDeMusicas\\ViewTrack.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\ViewTrack.cs",
-              "RelativeToolTip": "EditorDeMusicas\\ViewTrack.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T11:35:05.403Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FormPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs",
               "RelativeDocumentMoniker": "EditorDeMusicas\\FormPrincipal.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs",
               "RelativeToolTip": "EditorDeMusicas\\FormPrincipal.cs",
-              "ViewState": "AgIAAM0AAAAAAAAAAAAwwOUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANQAAAAAAAAAAAAEwO0AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-16T11:32:29.049Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FormPrincipal.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs",
-              "RelativeDocumentMoniker": "EditorDeMusicas\\FormPrincipal.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\FormPrincipal.cs [Design]",
-              "RelativeToolTip": "EditorDeMusicas\\FormPrincipal.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "EditorTags.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
+              "RelativeDocumentMoniker": "EditorDeMusicas\\EditorTags.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
+              "RelativeToolTip": "EditorDeMusicas\\EditorTags.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAD4vzkAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T19:10:39.761Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-12-22T19:18:54.903Z",
+              "EditorCaption": ""
             }
           ]
         },
@@ -134,40 +80,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "ab1748a5-cb65-40e6-84d7-057a4cba8676",
-        "Display": 1,
-        "X": 312,
-        "Y": 129,
-        "Width": 1379,
-        "Height": 762,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EditorTags.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
-              "RelativeDocumentMoniker": "EditorDeMusicas\\EditorTags.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorTags.cs",
-              "RelativeToolTip": "EditorDeMusicas\\EditorTags.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAjwFUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-16T11:55:16.957Z",
-              "EditorCaption": ""
             }
           ]
         }

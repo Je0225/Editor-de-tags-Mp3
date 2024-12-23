@@ -4,12 +4,13 @@
 
     private Label LblInformacoes { get; set; }
 
-    private PictureBox pbCapa { get; set; }
+    private PictureBox PbCapa { get; set; }
 
     public Boolean EstaSelecionado { get; set; }
 
-    public ViewTrack(String titulo, String album, String artista, Byte[] DataCapa) {
+    private readonly Image capaGenerica = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\imageMp3.jpg");
 
+    public ViewTrack(String titulo, String album, String artista, Byte[]? dataCapa) {
       LblInformacoes = new Label {
         Text = $"Titulo : {titulo}\nAlbum : {album}\nArtista : {artista}\n",
         AutoSize = false,
@@ -17,8 +18,8 @@
         Dock = DockStyle.Left,
       };
 
-      pbCapa = new PictureBox {
-        Image = Image.FromStream(new MemoryStream(DataCapa)),
+      PbCapa = new PictureBox {
+        Image = dataCapa == null? capaGenerica : Image.FromStream(new MemoryStream(dataCapa)),
         SizeMode = PictureBoxSizeMode.StretchImage,
         Dock = DockStyle.Right,
         Size = new Size(104, 78),
@@ -26,13 +27,13 @@
 
       LblInformacoes.MouseHover += OnMouseHover_ViewTrack;
       LblInformacoes.MouseLeave += OnMouseLeave_ViewTrack;
-      pbCapa.MouseHover += OnMouseHover_ViewTrack;
-      pbCapa.MouseLeave += OnMouseLeave_ViewTrack;
+      PbCapa.MouseHover += OnMouseHover_ViewTrack;
+      PbCapa.MouseLeave += OnMouseLeave_ViewTrack;
 
       Size = new Size(350, 78);
       Location = new Point(12, 12);
       BorderStyle = BorderStyle.FixedSingle;
-      Controls.AddRange(new Control[] { pbCapa , LblInformacoes });
+      Controls.AddRange(new Control[] { PbCapa , LblInformacoes });
     }
 
     private void MouseHoverFrm() {

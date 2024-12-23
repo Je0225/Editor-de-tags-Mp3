@@ -39,6 +39,8 @@
       lblQuantidadeArquivosRes = new Label();
       lblQtdArquivosText = new Label();
       gbPropriedades = new GroupBox();
+      lblNomeArquivo = new Label();
+      tbArquivo = new TextBox();
       lblArtistasParticipantes = new Label();
       tbArtistasParticipantes = new TextBox();
       lblAno = new Label();
@@ -56,8 +58,6 @@
       lblTitulo = new Label();
       openFileDialog = new OpenFileDialog();
       openFileDialog1 = new OpenFileDialog();
-      tbArquivo = new TextBox();
-      lblNomeArquivo = new Label();
       gbFaixas.SuspendLayout();
       gbPropriedades.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)pbCapa).BeginInit();
@@ -194,6 +194,22 @@
       gbPropriedades.TabStop = false;
       gbPropriedades.Text = "Propriedades";
       // 
+      // lblNomeArquivo
+      // 
+      lblNomeArquivo.AutoSize = true;
+      lblNomeArquivo.Location = new Point(71, 17);
+      lblNomeArquivo.Name = "lblNomeArquivo";
+      lblNomeArquivo.Size = new Size(49, 15);
+      lblNomeArquivo.TabIndex = 23;
+      lblNomeArquivo.Text = "Arquivo";
+      // 
+      // tbArquivo
+      // 
+      tbArquivo.Location = new Point(126, 14);
+      tbArquivo.Name = "tbArquivo";
+      tbArquivo.Size = new Size(188, 23);
+      tbArquivo.TabIndex = 22;
+      // 
       // lblArtistasParticipantes
       // 
       lblArtistasParticipantes.AutoSize = true;
@@ -209,6 +225,7 @@
       tbArtistasParticipantes.Name = "tbArtistasParticipantes";
       tbArtistasParticipantes.Size = new Size(188, 23);
       tbArtistasParticipantes.TabIndex = 20;
+      tbArtistasParticipantes.Enter += tbArtistasParticipantes_Enter;
       tbArtistasParticipantes.Leave += TextBox_Leave;
       // 
       // lblAno
@@ -284,7 +301,6 @@
       tbArtistaAlbum.Name = "tbArtistaAlbum";
       tbArtistaAlbum.Size = new Size(188, 23);
       tbArtistaAlbum.TabIndex = 4;
-      tbArtistaAlbum.Leave += TextBox_Leave;
       // 
       // lblArtistaAlbum
       // 
@@ -328,22 +344,6 @@
       // openFileDialog1
       // 
       openFileDialog1.FileName = "openFileDialog1";
-      // 
-      // tbArquivo
-      // 
-      tbArquivo.Location = new Point(126, 14);
-      tbArquivo.Name = "tbArquivo";
-      tbArquivo.Size = new Size(188, 23);
-      tbArquivo.TabIndex = 22;
-      // 
-      // lblNomeArquivo
-      // 
-      lblNomeArquivo.AutoSize = true;
-      lblNomeArquivo.Location = new Point(71, 17);
-      lblNomeArquivo.Name = "lblNomeArquivo";
-      lblNomeArquivo.Size = new Size(49, 15);
-      lblNomeArquivo.TabIndex = 23;
-      lblNomeArquivo.Text = "Arquivo";
       // 
       // FormPrincipal
       // 

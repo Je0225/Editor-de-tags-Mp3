@@ -24,9 +24,9 @@
     /// </summary>
     private void InitializeComponent() {
       pnlBottom = new Panel();
+      panel1 = new Panel();
       btnSelecionar = new Button();
       pnlItems = new FlowLayoutPanel();
-      panel1 = new Panel();
       pnlBottom.SuspendLayout();
       panel1.SuspendLayout();
       SuspendLayout();
@@ -37,8 +37,17 @@
       pnlBottom.Dock = DockStyle.Bottom;
       pnlBottom.Location = new Point(0, 513);
       pnlBottom.Name = "pnlBottom";
-      pnlBottom.Size = new Size(364, 38);
+      pnlBottom.Size = new Size(371, 38);
       pnlBottom.TabIndex = 4;
+      // 
+      // panel1
+      // 
+      panel1.Controls.Add(btnSelecionar);
+      panel1.Dock = DockStyle.Right;
+      panel1.Location = new Point(272, 0);
+      panel1.Name = "panel1";
+      panel1.Size = new Size(99, 38);
+      panel1.TabIndex = 5;
       // 
       // btnSelecionar
       // 
@@ -56,27 +65,19 @@
       pnlItems.Dock = DockStyle.Fill;
       pnlItems.Location = new Point(0, 0);
       pnlItems.Name = "pnlItems";
-      pnlItems.Size = new Size(364, 513);
+      pnlItems.Size = new Size(371, 513);
       pnlItems.TabIndex = 5;
-      // 
-      // panel1
-      // 
-      panel1.Controls.Add(btnSelecionar);
-      panel1.Dock = DockStyle.Right;
-      panel1.Location = new Point(265, 0);
-      panel1.Name = "panel1";
-      panel1.Size = new Size(99, 38);
-      panel1.TabIndex = 5;
       // 
       // FrmTracksRetornadas
       // 
       AutoScaleDimensions = new SizeF(7F, 15F);
       AutoScaleMode = AutoScaleMode.Font;
       AutoScroll = true;
-      ClientSize = new Size(364, 551);
+      ClientSize = new Size(371, 551);
       Controls.Add(pnlItems);
       Controls.Add(pnlBottom);
-      MaximizeBox = false;
+      MinimizeBox = false;
+      MinimumSize = new Size(387, 590);
       Name = "FrmTracksRetornadas";
       Text = "Resultados";
       pnlBottom.ResumeLayout(false);

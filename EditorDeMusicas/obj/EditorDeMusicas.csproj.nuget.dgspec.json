@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj": {}
+    "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj": {}
   },
   "projects": {
-    "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj": {
+    "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj",
         "projectName": "EditorDeMusicas",
-        "projectPath": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj",
-        "packagesPath": "C:\\Users\\jenif\\.nuget\\packages\\",
-        "outputPath": "D:\\Arquivos Jeni\\arquivos\\fontes_de_projetos\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\obj\\",
+        "projectPath": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\EditorDeMusicas.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Documents\\Sources\\CSharp\\EditorDeMusicas\\EditorDeMusicas\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jenif\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -78,7 +78,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

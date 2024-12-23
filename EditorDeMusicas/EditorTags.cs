@@ -60,7 +60,7 @@ namespace EditorDeMusicas {
       }
     }
     // TODO: Create a class to pass the tag info
-    public void Salvar(String artistas, String album, String titulo = "", String artistasParticipantes = "", String ano = "",  String numero = "") {
+    public void Salvar(String artistas, String album, string fileName, String titulo = "", String artistasParticipantes = "", String ano = "",  String numero = "") {
       if (Tags.Count == 0) {
         return;
       }
@@ -69,13 +69,14 @@ namespace EditorDeMusicas {
         faixa.Tag.AlbumArtists = artistas.Split(";");
         faixa.Tag.Performers = artistasParticipantes.Split(";");
         faixa.Tag.Album = album;
-        faixa.Tag.Year = Convert.ToUInt32(ano);
+        faixa.Tag.Year = !String.IsNullOrEmpty(ano)? Convert.ToUInt32(ano) : Convert.ToUInt32("0");
+        
         SetaCapaNaTag(faixa);
         if (Tags.Count == 1) {
           faixa.Tag.Title = titulo;
-          faixa.Tag.Track = Convert.ToUInt32(numero);
+          faixa.Tag.Track = !String.IsNullOrEmpty(numero)? Convert.ToUInt32(numero) : Convert.ToUInt32("0");
           faixa.Save();
-          string newpath = Diretorio + "\\" + titulo + ".mp3";
+          string newpath = Diretorio + "\\" + fileName + ".mp3";
           System.IO.File.Move(faixa.Name, newpath);
           mensagem = "Arquivo alterado com sucesso";
         } else {

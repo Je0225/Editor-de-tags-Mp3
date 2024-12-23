@@ -18,25 +18,26 @@ namespace EditorDeMusicas {
       Int32 limit = 50;
       MontaURL(artista, track, type, limit.ToString());
 
-      Response = JsonConvert.DeserializeObject<Response>(await FazRequisicaoTracks());
-      BaixaImagens();
+      Response = JsonConvert.DeserializeObject<Response>(await FazRequisicaoTracks() ?? string.Empty);
+      BuscaBytesDasImagens();
       return Response?.Tracks.Items;
     }
 
-    private void BaixaImagens() {
+    private void BuscaBytesDasImagens() {
       if (Response?.Tracks.Items == null) {
         return;
       }
-      foreach (Items item in Response.Tracks.Items) {
+      foreach (Items item in Response.Tracks.Items.Where(item => item.Album.Imagens.Count > 0)) {
         using HttpClient client = new HttpClient();
         using Task<Byte[]> stream = client.GetByteArrayAsync(item.Album.Imagens[0].Url);
-        item.Album.Imagens[0].Data = stream.Result;
+        item.Album.Imagens[0].Bytes = stream.Result;
       }
     }
 
     private void MontaURL(String artista, String track, String type, String limit) {
       Url = "https://api.spotify.com/v1/search?q=[QUERY]&limit=[LIMIT]&type=[TYPE]";
       String q = "track:[TRACK]";
+
       q = q.Replace("[TRACK]", track);
       if (!String.IsNullOrEmpty(artista)) {
         q += " artist:[ARTIST]";
@@ -46,8 +47,9 @@ namespace EditorDeMusicas {
       Url = Url.Replace("[QUERY]", q).Replace("[TYPE]", type).Replace("[LIMIT]", limit);
     }
 
-    private async Task<String> FazRequisicaoTracks() {
+    private async Task<String?> FazRequisicaoTracks() {
       HttpClient client = new HttpClient();
+
       if (TokenInfo == null) {
         RequestTokens();
       }
@@ -79,7 +81,6 @@ namespace EditorDeMusicas {
         MessageBox.Show(@"Erro ao requisitar tokens: " + response.StatusCode + ": \n" + response.Content);
       }
     }
-
   }
 
 }

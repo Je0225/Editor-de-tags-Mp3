@@ -1,32 +1,23 @@
-﻿using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using File = TagLib.File;
-using Tag = TagLib.Id3v2.Tag;
-
-namespace EditorDeMusicas {
+﻿namespace EditorDeMusicas {
 
   public partial class FrmTracksRetornadas : Form {
 
-    public Items? SelectedItem { get; private set; }
-    private ViewTrack? SelectedViewTrack { get; set; }
+    public Items? ItemSelecionado { get; private set; }
 
-    private List<Items>? Tracks { get; set; }
+    private ViewTrack? ViewTrackSelecionado { get; set; }
+
+    private List<Items> Tracks { get; set; }
 
     public FrmTracksRetornadas( List<Items> tracks) {
       InitializeComponent();
       Tracks = tracks;
-      CriaPanelsTracks();
+      CriaPaineisDosItens();
     }
 
-    private void CriaPanelsTracks() {
+    private void CriaPaineisDosItens() {
       foreach (Items track in Tracks) {
-        pnlItems.Controls.Add(new ViewTrack(
-          track.Nome,
-          track.Album.Nome,
-          track.Artistas[0].Nome,
-          track.Album.Imagens[0].Data) {
-          Tag = track
-        });
+        Byte[]? bytes = track.Album.Imagens.Count > 0 ? track.Album.Imagens[0].Bytes : null;
+        pnlItems.Controls.Add(new ViewTrack( track.Nome, track.Album.Nome, track.Artistas[0].Nome, bytes) { Tag = track });
       }
       foreach (ViewTrack panel in pnlItems.Controls.OfType<ViewTrack>()) {
         foreach (Control control in panel.Controls) {
@@ -35,22 +26,25 @@ namespace EditorDeMusicas {
       }
     }
 
-    private void ViewTrack_Click(Object sender, EventArgs e) {
+    private void SelecionaViewTrack(Control ctrl) {
       foreach (ViewTrack control in pnlItems.Controls.OfType<ViewTrack>().Where(control => control.EstaSelecionado = true)) {
         control.EstaSelecionado = false;
         control.BackColor = SystemColors.Control;
       }
-      Control ctrl = (Control)sender;
-      SelectedViewTrack = (ViewTrack)ctrl.Parent;
-      SelectedViewTrack.EstaSelecionado = true;
-      SelectedItem = (Items)SelectedViewTrack.Tag;
-      SelectedViewTrack.Focus();
-      SelectedViewTrack.BackColor = SystemColors.GradientInactiveCaption;
+      ViewTrackSelecionado = (ViewTrack)ctrl.Parent!;
+      ViewTrackSelecionado.EstaSelecionado = true;
+      ItemSelecionado = (Items)ViewTrackSelecionado.Tag!;
+      ViewTrackSelecionado.Focus();
+      ViewTrackSelecionado.BackColor = SystemColors.GradientInactiveCaption;
     }
 
     private void Selecionar() {
       DialogResult = DialogResult.OK;
       Close();
+    }
+
+    private void ViewTrack_Click(Object sender, EventArgs e) {
+      SelecionaViewTrack((Control)sender);
     }
 
     private void btnSelecionar_Click(object sender, EventArgs e) {
